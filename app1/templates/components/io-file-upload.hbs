@@ -1,0 +1,20 @@
+<form class="form-inline" role="form">
+    <div class="form-group">
+	{{#if multiple}}
+        {{#if autoUpload}}
+            <input type="file" class="file-uploader form-control" {{action 'upload' on='change'}} multiple>
+        {{else}}
+            <input type="file" class="file-uploader form-control" multiple>
+        {{/if}}
+    {{else}}
+        {{#if autoUpload}}
+            <input type="file" class="file-uploader form-control" {{action 'upload' on='change'}}>
+        {{else}}
+            <input type="file" class="file-uploader form-control">
+        {{/if}}
+    {{/if}}
+    </div>
+    {{#if showUploadButton}}
+	<button {{action "upload"}} class="btn btn-primary btn-sm">上传</button>
+    {{/if}}
+</form>

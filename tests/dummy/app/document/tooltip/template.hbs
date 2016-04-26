@@ -1,0 +1,181 @@
+<h1>Tooltip 文字提示</h1>
+简单的文字提示气泡框。
+
+<div class="demo-type">
+	<h2>何时使用#</h2>
+      <p>鼠标移入则显示提示，移出消失，气泡浮层不承载复杂文本和操作。<br>可用来代替系统默认的 title 提示，提供一个按钮/文字/操作的文案解释。</p>
+      <h2>代码演示#</h2>
+
+<div class="demo">
+    <div style="margin-left: 60px;">
+      {{#io-tooltip type="topLeft" tip="提示文字" title="上左" }}
+        <a href="#">上左</a>
+      {{/io-tooltip}}
+      {{#io-tooltip type="top"  tip="提示文字" title="上边" }}
+        <a href="#">上边</a>
+      {{/io-tooltip}}
+      {{#io-tooltip type="topRight"  tip="提示文字"  title="上右" }}
+        <a href="#">上右</a>
+      {{/io-tooltip}}
+    </div>
+    <div style="width: 60px;float: left;">
+      {{#io-tooltip type="leftTop"  tip="提示文字" title="左边"}}
+        <a href="#">左边</a>
+      {{/io-tooltip}}
+      {{#io-tooltip type="left"  tip="提示文字" title="左边"}}
+        <a href="#">左边</a>
+      {{/io-tooltip}}
+      {{#io-tooltip type="leftBottom"  tip="提示文字" title="左下"}}
+        <a href="#">左下</a>
+      {{/io-tooltip}}
+    </div>
+    <div style="width: 60;margin-left: 270px;">
+      {{#io-tooltip type="rightTop" tip="提示文字"  title="右上"}}
+        <a href="#">右上</a>
+      {{/io-tooltip}}
+      {{#io-tooltip type="right" tip="提示文字"  title="右边"}}
+        <a href="#">右边</a>
+      {{/io-tooltip}}
+      {{#io-tooltip type="rightBottom" tip="提示文字"  title="右下"}}
+        <a href="#">右下</a>
+      {{/io-tooltip}}
+    </div>
+    <div style="margin-left: 60px; clear: both">
+      {{#io-tooltip type="bottomLeft" tip="提示文字"  title="上右"}}
+        <a href="#">上右</a>
+      {{/io-tooltip}}
+      {{#io-tooltip type="bottom" tip="提示文字"  title="下边"}}
+        <a href="#">下边  </a>
+      {{/io-tooltip}}
+      {{#io-tooltip type="bottomRight" tip="提示文字" title="下右"}}
+        <a href="#">下右</a>
+      {{/io-tooltip}}
+    </div>
+</div>
+
+	<div class="demo">
+		<div class="demo-example">
+                  {{io-tooltip tip="提示文字" type="top"  title="鼠标移上来就会出现提示"}}
+		</div>
+		<div class="demo-code">
+                  <div class="highlight">
+                        <pre><code class="language-html" data-lang="html">\{{io-tooltip tip="提示文字" type="top"  title="鼠标移上来就会出现提示"}}</code></pre>
+                  </div>
+            </div>
+	</div>
+      <div class="demo">
+            <div class="demo-example">
+                  <p>{{io-tooltip tip="提示文字" type="right"  title="鼠标移上来就会出现提示"}}</p>
+            </div>
+            <div class="demo-code">
+                  <div class="highlight">
+                        <pre><code class="language-html" data-lang="html">\{{io-tooltip tip="提示文字" type="right"  title="鼠标移上来就会出现提示"}}</code></pre>
+                  </div>
+            </div>
+      </div>
+      <div class="demo">
+            <div class="demo-example">
+                  <p>{{io-tooltip tip="提示文字" type="bottom"  title="鼠标移上来就会出现提示"}}</p>
+            </div>
+            <div class="demo-code">
+                  <div class="highlight">
+                        <pre><code class="language-html" data-lang="html">\{{io-tooltip tip="提示文字" type="bottom"  title="鼠标移上来就会出现提示"}}</code></pre>
+                  </div>
+            </div>
+      </div>
+      <div class="demo">
+            <div class="demo-example">
+                  <p>{{io-tooltip tip="提示文字" type="left"  title="鼠标移上来就会出现提示"}}</p>
+            </div>
+            <div class="demo-code">
+                  <div class="highlight">
+                        <pre><code class="language-html" data-lang="html">\{{io-tooltip tip="提示文字" type="left"  title="鼠标移上来就会出现提示"}}</code></pre>
+                  </div>
+            </div>
+      </div>
+      <div class="demo">
+            <div class="demo-example">
+                  <p>{{io-tooltip tip="提示文字" type="leftTop"  title="鼠标移上来就会出现提示"}}</p>
+            </div>
+            <div class="demo-code">
+                  <div class="highlight">
+                        <pre><code class="language-html" data-lang="html">\{{io-tooltip tip="提示文字" type="leftTop"  title="鼠标移上来就会出现提示"}}</code></pre>
+                  </div>
+            </div>
+      </div>
+      <div class="demo">
+            <div class="demo-example">
+                  <p>{{io-tooltip tip="提示文字" type="leftBottom"  title="鼠标移上来就会出现提示"}}</p>
+            </div>
+            <div class="demo-code">
+                  <div class="highlight">
+                        <pre><code class="language-html" data-lang="html">\{{io-tooltip tip="提示文字" type="leftBottom"  title="鼠标移上来就会出现提示"}}</code></pre>
+                  </div>
+            </div>
+      </div>
+      <div class="demo">
+            <div class="demo-example">
+                  <p>{{io-tooltip tip="提示文字" type="topLeft"  title="鼠标移上来就会出现提示"}}</p>
+            </div>
+            <div class="demo-code">
+                  <div class="highlight">
+                        <pre><code class="language-html" data-lang="html">\{{io-tooltip tip="提示文字" type="topLeft"  title="鼠标移上来就会出现提示"}}</code></pre>
+                  </div>
+            </div>
+      </div>
+      <div class="demo">
+            <div class="demo-example">
+                  <p>{{io-tooltip tip="提示文字" type="topRight"  title="鼠标移上来就会出现提示"}}</p>
+            </div>
+            <div class="demo-code">
+                  <div class="highlight">
+                        <pre><code class="language-html" data-lang="html">\{{io-tooltip tip="提示文字" type="topRight"  title="鼠标移上来就会出现提示"}}</code></pre>
+                  </div>
+            </div>
+      </div>
+      <div class="demo">
+            <div class="demo-example">
+                  <p>{{io-tooltip tip="提示文字" type="rightTop"  title="鼠标移上来就会出现提示"}}</p>
+            </div>
+            <div class="demo-code">
+                  <div class="highlight">
+                        <pre><code class="language-html" data-lang="html">\{{io-tooltip tip="提示文字" type="rightTop"  title="鼠标移上来就会出现提示"}}</code></pre>
+                  </div>
+            </div>
+      </div>
+      <div class="demo">
+            <div class="demo-example">
+                  <p>{{io-tooltip tip="提示文字" type="rightBottom"  title="鼠标移上来就会出现提示"}}</p>
+            </div>
+            <div class="demo-code">
+                  <div class="highlight">
+                        <pre><code class="language-html" data-lang="html">\{{io-tooltip tip="提示文字" type="rightBottom"  title="鼠标移上来就会出现提示"}}</code></pre>
+                  </div>
+            </div>
+      </div>
+      <div class="demo">
+            <div class="demo-example">
+                  <p>{{io-tooltip tip="提示文字" type="bottomLeft"  title="鼠标移上来就会出现提示"}}</p>
+            </div>
+            <div class="demo-code">
+                  <div class="highlight">
+                        <pre><code class="language-html" data-lang="html">\{{io-tooltip tip="提示文字" type="bottomLeft"  title="鼠标移上来就会出现提示"}}</code></pre>
+                  </div>
+            </div>
+      </div>
+      <div class="demo">
+            <div class="demo-example">
+                  <p>{{io-tooltip tip="提示文字" type="bottomRight"  title="鼠标移上来就会出现提示"}}</p>
+            </div>
+            <div class="demo-code">
+                  <div class="highlight">
+                        <pre><code class="language-html" data-lang="html">\{{io-tooltip tip="提示文字" type="bottomRight"  title="鼠标移上来就会出现提示"}}</code></pre>
+                  </div>
+            </div>
+      </div>
+</div>
+<hr/>
+<div class="demo">
+{{#io-button type="primary" }} 主按钮 {{/io-button}}
+{{#io-affix offset="20"}}{{#io-button type="primary" }} 主按钮 {{/io-button}}{{/io-affix}}
+</div>

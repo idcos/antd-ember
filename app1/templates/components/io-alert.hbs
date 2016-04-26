@@ -1,0 +1,15 @@
+{{#if showIcon}}
+	<i class="io-alert-icon ioicon ioicon-{{iconTypeClass}}"></i>
+{{/if}}
+
+<span class="io-alert-message">{{message}}</span>
+<span class="io-alert-description">{{description}}</span>
+{{#if closable}}
+	<a class="io-alert-close-icon"  {{action "close"}}>
+		{{#if (eq closeText '')}}
+			<i class="ioicon ioicon-cross"></i> 
+		{{else}}
+			{{closeText}}
+		{{/if}}
+	</a>
+{{/if}}

@@ -1,0 +1,43 @@
+<span>
+{{#if hasIcon}}
+    <i {{action 'toggle'}} class="{{iconClass}}"></i>
+{{else}}
+    <a {{action 'toggle'}} class="text">*</a>
+{{/if}}
+</span>
+
+{{#if tree.in-multi-selection}}
+    <span class="em-tree-node-multiselection">
+    {{#if multi-selected}}
+        <i {{action 'toggleSelection'}} class="{{tree.selected-icon}}"></i>
+    {{else}}
+        <i {{action 'toggleSelection'}} class="{{tree.unselected-icon}}"></i>
+    {{/if}}
+    </span>
+{{/if}}
+
+<i {{action 'select'}} class="fa fa-square-o"></i>
+<span {{action 'select'}} class="{{nodeSelectedClasses}}">
+{{model.title}}
+{{#if tree.hovered-actions}}
+    <span class="actions">
+    {{#each hoveredActions}}
+        {{io-tree-node-action meta=this model=model}}
+    {{/each}}
+    </span>
+{{/if}}
+</span>
+
+{{#if expanded}}
+<ul class="io-tree-branch fa-ul">
+{{#each model.children as |child|}} 
+    {{io-tree-node 
+        model=child
+        requestReload=requestReload 
+        tree=tree 
+        async=async 
+        targetObject=targetObject
+    }}
+{{/each}}
+</ul>
+{{/if}}

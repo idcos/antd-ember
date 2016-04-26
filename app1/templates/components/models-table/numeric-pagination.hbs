@@ -1,0 +1,11 @@
+<div class="btn-toolbar pull-right" role="toolbar">
+    <ul class="io-pagination " unselectable="unselectable" >
+        {{#each visiblePageNumbers as |page|}}
+	        {{#if page.isLink}}
+		       <li title="{{page.label}}"  class="io-pagination-item io-pagination-item-{{page.label}} {{if page.isActive 'io-pagination-item-active'}} "  {{action "gotoCustomPage" page.label}}> <a > {{page.label}} </a> </li>
+	        {{else}}
+	        	<li title="{{page.label}}" disabled="disabled" class="io-pagination-item io-pagination-item-{{page.label}}"  {{action "gotoCustomPage" page.label}}> <a > {{page.label}} </a> </li>
+	        {{/if}}
+        {{/each}}
+    </ul>
+</div>

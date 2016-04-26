@@ -1,0 +1,123 @@
+<a href="#"
+  class="Searchable-select__label
+    {{if _isShowingMenu 'Searchable-select__label--menu-open'}}
+    {{if multiple 'Searchable-select__label--multiple'}}
+    {{if _hasMultipleSelection 'Searchable-select__label--multiple-selected'}}"
+  {{action "toggleMenu"}}>
+
+  {{#if _hasSingleSelection}}
+    <span class="Searchable-select__selected-label">
+      {{searchable-select-get _selected optionLabelKey}}
+    </span>
+  {{/if}}
+
+  {{#if _hasMultipleSelection}}
+    {{#each _selected as |selectedOption|}}
+      <span class="Searchable-select__selected-pill">
+        <span class="Searchable-select__selected-pill-text">
+          {{searchable-select-get selectedOption optionLabelKey}}
+        </span>
+        <span
+          class="Searchable-select__selected-pill-clear"
+          {{action "removeOption" selectedOption bubbles=false}}>
+          &times;
+        </span>
+      </span>
+    {{/each}}
+  {{/if}}
+
+  {{#unless _hasSelection}}
+    <span class="Searchable-select__prompt">{{prompt}}</span>
+  {{/unless}}
+</a>
+
+{{#if _isShowingMenu}}
+  <div class="Searchable-select__menu">
+    <div class="Searchable-select__search" {{action "noop" bubbles=false}}>
+      {{input
+        class="Searchable-select__input"
+        type="text"
+        placeholder=searchPrompt
+        key-up="updateSearch"
+        tabindex=-1
+        bubbles=false}}
+    </div>
+
+    {{#if _isShowingClear}}
+      <div class="Searchable-select__clear"
+        tabindex=-1
+        data-enter-key-action="clear"
+        {{action "clear" bubbles=false}}>
+        <span class="Searchable-select__icon Searchable-select__icon--clear">
+          &times;
+        </span>
+        {{clearLabel}}
+      </div>
+    {{/if}}
+
+    {{#if _isShowingAddNew}}
+    <div class="Searchable-select__add-new"
+      tabindex=-1
+      data-enter-key-action="addNew"
+      {{action "addNew" bubbles=false}}>
+      {{addLabel}} <em>{{_searchText}}</em>
+    </div>
+    {{/if}}
+
+    {{#if _isShowingNoResultsMessage}}
+    <div class="Searchable-select__info">
+      {{noResultsMessage}}
+    </div>
+    {{/if}}
+
+    {{#if isLoading}}
+      <div class="Searchable-select__info">
+        <!-- Loading SVG by Sam Herbert (@sherb), More @ http://goo.gl/7AJzbL -->
+        <svg
+          width="12" height="12"
+          viewBox="0 0 40 40"
+          xmlns="http://www.w3.org/2000/svg"
+          stroke="#9a9a9a"
+          class="Searchable-select__loader">
+          <g fill="none" fill-rule="evenod  d">
+            <g transform="translate(2 2)" stroke-width="4">
+              <circle
+                stroke-opacity=".6"
+                cx="18" cy="18" r="18"
+                class="Searchable-select__loader-circle"/>
+              <path
+                d="M36 18c0-9.94-8.06-18-18-18"
+                class="Searchable-select__loader-spinner">
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  from="0 18 18"
+                  to="360 18 18"
+                  dur="0.8s"
+                  repeatCount="indefinite"/>
+              </path>
+            </g>
+          </g>
+        </svg>
+        <span class="Searchable-select__loader-text">
+          {{loadingMessage}}
+        </span>
+      </div>
+    {{/if}}
+
+    {{#if _hasResults}}
+    <ul class="Searchable-select__options-list">
+      {{#each _filteredContent as |option|}}
+        {{io-searchable-select-option
+          option=option
+          selected=_selected
+          searchText=_searchText
+          optionLabelKey=optionLabelKey
+          optionDisabledKey=optionDisabledKey
+          select-item=(action "selectItem")}}
+      {{/each}}
+    </ul>
+    {{/if}}
+
+  </div>
+{{/if}}

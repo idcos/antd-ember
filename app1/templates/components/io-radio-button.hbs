@@ -1,0 +1,11 @@
+<span class="io-radio-button {{checkedClass}} {{disabledClass}} ">
+	<span class="io-radio-button-inner"></span>
+	<input type="radio" 
+		class="io-radio-button-input"
+		value={{value}} 
+		checked={{htmlChecked}} 
+		name={{name}} 
+		disabled={{disabled}} 
+		{{action 'change'}}/>
+</span>
+<span>{{yield}}</span>

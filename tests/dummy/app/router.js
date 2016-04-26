@@ -30,6 +30,8 @@ Router.map(function() {
     this.route('split');
     this.route('alert');
     this.route('dropdown');
+    this.route('tooltip');
+    this.route('tag');
   });
 });
 

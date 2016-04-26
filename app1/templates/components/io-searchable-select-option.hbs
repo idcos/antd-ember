@@ -1,0 +1,14 @@
+{{#if isSelected}}
+  <span class="Searchable-select__icon Searchable-select__icon--check
+    Searchable-select__option-indicator--selected">
+    &#10003;
+  </span>
+{{/if}}
+
+<span class="Searchable-select__option-label
+  {{if isSelected 'Searchable-select__option-label--selected'}}">
+  {{searchable-select-highlight-match
+    (searchable-select-get option optionLabelKey)
+    searchText
+  }}
+</span>

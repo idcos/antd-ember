@@ -1,0 +1,80 @@
+<div class="{{classes.outerTableWrapper}} io-table io-table-large">
+  {{! global filter start }}
+  {{#if showGlobalFilter}}
+    {{partial globalFilterTemplate}}
+  {{/if}}
+  {{! global filter end }}
+  {{! columns dropdown start }}
+  {{#if showColumnsDropdown}}
+    {{partial columnsDropdownTemplate}}
+  {{/if}}
+  {{! columns dropdown end }}
+
+  <!-- Div needed by Firefox to reset floating positioning -->
+  <div style="clear:both"/>
+
+  <div class="io-table-body">
+    <table>
+      {{! table header start }}
+      <thead class="io-table-thead">
+      <tr>
+        {{#each processedColumns as |column|}}
+          {{#if column.isVisible}}
+            <th class="{{classes.theadCell}}" {{action "sort" column}}>
+              {{column.title}}
+              <i class="ioicon {{if column.sortAsc 'ioicon-caret-up'}} {{if column.sortDesc 'ioicon-caret-down'}}" style="color: #999; font-size: 12px; margin-left: 12px;"></i>
+            </th>
+          {{/if}}
+        {{/each}}
+      </tr>
+      {{!-- useFilteringByColumns --}}
+      {{#if false}}
+        <tr>
+          {{#each processedColumns as |column|}}
+            {{#if column.isVisible}}
+              <th class="{{classes.theadCell}}">
+                {{#if column.useFilter}}
+                  {{#if column.filterWithSelect}}
+                    <select class="form-control changeFilterForColumn {{column.propertyName}}" {{action 'changeFilterForColumn' column on='change'}}>
+                      {{#each column.filterOptions key="@index" as |item|}}
+                        <option value="{{item}}" selected={{is-equal item selectedValue}}>
+                          {{item}}
+                        </option>
+                      {{/each}}
+                    </select>
+                  {{else}}
+                    {{input type="text" value=column.filterString class="form-control"}}
+                  {{/if}}
+                {{else}}
+                  &nbsp;
+                {{/if}}
+              </th>
+            {{/if}}
+          {{/each}}
+        </tr>
+      {{/if}}
+      </thead>
+      {{! table header end }}
+      {{! table body start }}
+      <tbody class="io-table-tbody">
+      {{#if allColumnsAreHidden}}
+        <tr><td colspan={{processedColumns.length}} class="{{classes.noDataCell}}">{{{messages.allColumnsAreHidden}}}</td></tr>
+      {{else}}
+        {{#if visibleContent.length}}
+          {{#each visibleContent as |record|}}
+            {{partial rowTemplate}}
+          {{/each}}
+        {{else}}
+          <tr><td colspan={{processedColumns.length}}>{{{messages.noDataToShow}}}</td></tr>
+        {{/if}}
+      {{/if}}
+      </tbody>
+      {{! table body end }}
+    </table>
+  </div>
+  {{! table footer start }}
+  {{#if showTableFooter}}
+    {{partial tableFooterTemplate}}
+  {{/if}}
+  {{! table footer end }}
+</div>

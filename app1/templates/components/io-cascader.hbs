@@ -1,0 +1,23 @@
+<span class="io-input-wrapper"  {{action 'toggleMenu'}}>
+    <input placeholder="{{placeholder}}" class="io-cascader-input io-input " style="width:100%;" value="{{_value}}" readonly="true" type="text" />
+</span>
+
+	{{#if (gt values.length 0)}} 
+		{{io-icon class="io-cascader-picker-clear" type="cross-circle" onClick="clearValues"}}
+	{{/if}}
+	{{io-icon class="io-cascader-picker-arrow" type="down"}}
+
+<div class="io-cascader-menus  io-cascader-menus-placement-bottomLeft" >
+	{{#each _showMenus as |menu|}}
+		<ul class="io-cascader-menu">
+			{{#each menu as |option|}}
+				<li {{action 'selectOption' option }} 
+					class="io-cascader-menu-item 
+					{{if option.model.active 'io-cascader-menu-item-active'}} 
+					{{if option.model.disabled 'io-cascader-menu-item-disabled'}}">
+					{{option.model.label}}
+				</li>
+			{{/each}}
+		</ul>
+	{{/each}}
+</div>

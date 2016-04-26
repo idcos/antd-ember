@@ -1,0 +1,47 @@
+<h1>Tag 标签</h1>
+进行标记和分类的小标签。
+
+<div class="demo-type">
+	<h2>何时使用#</h2>
+      <p>用于标记事物的属性和维度,进行分类。</p>
+      <h2>代码演示#</h2>
+	<div class="demo">
+		<div class="demo-example">
+            <p>
+            	{{io-tag 
+                   message="标签一" 
+                   type="info"}}
+                {{io-tag 
+                   message="标签二" 
+                   type="warn" 
+                   closable=true}}
+                {io-tag 
+                   message="标签三" 
+                   type="success"  
+                   showIcon=true}}
+                {{io-tag 
+                   message="标签四" 
+                   type="error"  
+                   showIcon=true 
+                   closable=true 
+				   closeText="关闭"}}
+			</p>
+		</div>
+		<div class="demo-code">
+            <div class="highlight">
+                <pre>
+                    <code class="language-html" data-lang="html">
+                        \{{io-tag message="标签一" type="info"}}
+                   		\{{io-tag message="标签二" type="warn" closable=true}}
+                   		\{{io-tag message="标签三" type="success" showIcon=true}}
+                   		\{{io-tag message="标签四" type="error" showIcon=true closable=true closeText="关闭"}}
+                    </code>
+                </pre>
+            </div>
+        </div>
+	</div>
+</div>
+
+
+
+

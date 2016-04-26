@@ -1,0 +1,159 @@
+{{#if schema}}
+	<div class="form-header">
+		<h2 class="form-header__title">	
+			{{schema.title}} 
+		</h2>
+		<p class="form-header__description">
+			{{schema.description}}
+		</p>
+	</div>
+	{{#each schemaFields as |it|}}
+		{{!-- text field --}}
+		{{#if (eq it.type "text")}}
+			{{#io-form-group
+				labelColClass=(if it.labelColClass it.labelColClass schema.labelColClass)
+				inputColClass=(if it.inputColClass it.inputColClass schema.inputColClass)
+				required=it.required
+				help=it.help
+				label=it.label}}
+				{{io-input 
+					type="text"
+					value=it.value
+					placeholder=it.placeholder
+					pattern=it.pattern
+					required=it.required
+					data-error=it.error}}
+			{{/io-form-group}}
+		{{/if}}
+		
+		{{!-- number field --}}
+		{{#if (eq it.type "number")}}
+			{{#io-form-group
+				labelColClass=(if it.labelColClass it.labelColClass schema.labelColClass)
+				inputColClass=(if it.inputColClass it.inputColClass schema.inputColClass)
+				required=it.required
+				help=it.help
+				label=it.label}}
+				{{io-input 
+					type="number"
+					value=it.value
+					placeholder=it.placeholder
+					pattern=it.pattern
+					required=it.required
+					data-error=it.error}}
+			{{/io-form-group}}
+		{{/if}}
+
+		{{!-- password field --}}
+		{{#if (eq it.type "password")}}
+			{{#io-form-group
+				labelColClass=(if it.labelColClass it.labelColClass schema.labelColClass)
+				inputColClass=(if it.inputColClass it.inputColClass schema.inputColClass)
+				required=it.required
+				help=it.help
+				label=it.label}}
+				{{io-input 
+					type="password"
+					value=it.value
+					placeholder=it.placeholder
+					pattern=it.pattern
+					required=it.required
+					data-error=it.error}}
+			{{/io-form-group}}
+		{{/if}}
+
+		{{!-- enum field --}}
+		{{#if (eq it.type "enum")}}
+			{{#io-form-group
+				labelColClass=(if it.labelColClass it.labelColClass schema.labelColClass)
+				inputColClass=(if it.inputColClass it.inputColClass schema.inputColClass)
+				required=it.required
+				help=it.help
+				label=it.label}}
+				{{#io-button-group}}
+					{{#each it.enum as |enumItem|}}
+					 	{{#io-radio-button 
+					 		value=enumItem.[0]
+					 		name=it.field 
+					 		checked=it.value}}
+						 	{{enumItem.[1]}}
+						 {{/io-radio-button}}
+					{{/each}}
+				{{/io-button-group}}
+
+			{{/io-form-group}}
+		{{/if}}
+
+		{{!-- select field --}}
+		{{#if (eq it.type "select")}}
+			{{#io-form-group
+				labelColClass=(if it.labelColClass it.labelColClass schema.labelColClass)
+				inputColClass=(if it.inputColClass it.inputColClass schema.inputColClass)
+				required=it.required
+				help=it.help
+				label=it.label}}
+				{{#io-select 
+					value=it.value 
+					required=it.required
+					placeholder=it.placeholder}}
+					{{#each it.options as |option|}}
+					 	{{#io-option 
+					 		value=option.[0]
+					 		checked=it.value}}
+						 	{{option.[1]}}
+						 {{/io-option}}
+					{{/each}}
+				{{/io-select}}
+
+			{{/io-form-group}}
+		{{/if}}
+		
+		{{!-- checkbox --}}
+		{{#if (eq it.type "check")}}
+			{{#io-form-group
+				labelColClass=(if it.labelColClass it.labelColClass schema.labelColClass)
+				inputColClass=(if it.inputColClass it.inputColClass schema.inputColClass)
+				required=it.required
+				help=it.help
+				label=it.label}}
+				<label for="">
+					{{io-checkbox 
+						checked=it.value
+						required=it.required
+						data-error=it.error}}
+					{{it.checkLabel}}
+				</label>
+			{{/io-form-group}}
+		{{/if}}
+
+		{{!-- textarea field --}}
+		{{#if (eq it.type "textarea")}}
+			{{#io-form-group
+				labelColClass=(if it.labelColClass it.labelColClass schema.labelColClass)
+				inputColClass=(if it.inputColClass it.inputColClass schema.inputColClass)
+				required=it.required
+				help=it.help
+				label=it.label}}
+				{{#io-textarea 
+					value=it.value
+					placeholder=it.placeholder
+					pattern=it.pattern
+					required=it.required
+					data-error=it.error}}
+					{{it.value}}
+				{{/io-textarea}}
+			{{/io-form-group}}
+		{{/if}}
+
+	{{/each}}
+	
+	<div class="form-group row">
+		<div class="{{schema.labelColClass}}">&nbsp;</div>
+		<div class="{{schema.inputColClass}}">
+			{{#io-button type="primary" class=schema.submit.submitClass submit=true}} 
+				{{schema.submit.text}}
+			{{/io-button}}
+		</div>
+	</div>
+{{/if}}
+{{yield}}

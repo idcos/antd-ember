@@ -1,0 +1,1 @@
+export { default, searchableSelectHighlightMatch } from 'ember-cli-idcos/helpers/searchable-select-highlight-match';
