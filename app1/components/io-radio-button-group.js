@@ -1,1 +1,0 @@
-export { default } from 'ember-cli-idcos/components/io-form/radio-button-group';
