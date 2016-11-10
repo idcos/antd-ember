@@ -423,6 +423,12 @@ export default Component.extend({
     gotoForwardEnabled: computed('currentPageNumber', 'pagesCount', function() {
         return get(this, 'currentPageNumber') < get(this, 'pagesCount');
     }),
+    filterStringIsNone: Ember.observer('filterString', function() {
+        var filterString=this.get("filterString");
+        if(filterString==""||filterString==undefined){
+            this.send("searchAction",this.get("filterString"));
+        }
+    }),
     /**
      * @type {Ember.Object[]}
      * @name ModelsTable#filteredContent
@@ -918,6 +924,74 @@ export default Component.extend({
         }
     }),
     actions: {
+        searchAction: function(filterString){
+            const {
+                processedColumns,
+                data,
+                useFilteringByColumns,
+                filteringIgnoreCase
+            } = getProperties(this, 'processedColumns', 'data', 'useFilteringByColumns', 'filteringIgnoreCase');
+            var filterString = get(this, 'filterString');
+            if (!data) {
+                return A([]);
+            }
+            /**
+             * [indexNumberBase description]
+             * @type {[type]}
+             */
+            const indexNumberBase = this.get('indexNumberBase') || 0;
+            const showIndexNumber = this.get('showIndexNumber');
+            data.forEach((it, index) => {
+                set(it, '__index', index + indexNumberBase);
+            });
+
+            // global search
+            var globalSearch = data.filter(function(row) {
+                return processedColumns.length ? processedColumns.any(c => {
+                    const propertyName = get(c, 'propertyName');
+                    if (propertyName) {
+                        var cellValue = '' + get(row, propertyName);
+                        if (filteringIgnoreCase) {
+                            cellValue = cellValue.toLowerCase();
+                            filterString = filterString.toLowerCase();
+                        }
+                        return -1 !== cellValue.indexOf(filterString);
+                    }
+                    return false;
+                }) : true;
+            });
+            var filteredContent=null;
+            if (!useFilteringByColumns) {
+                filteredContent=A(globalSearch);
+            }else{
+                filteredContent = A(globalSearch.filter(row => {
+                    return processedColumns.length ? processedColumns.every(c => {
+                        const propertyName = get(c, 'propertyName');
+                        if (propertyName) {
+                            var cellValue = '' + get(row, propertyName);
+                            if (get(c, 'useFilter')) {
+                                var filterString = get(c, 'filterString');
+                                if (get(c, 'filterWithSelect')) {
+                                    if ('' === filterString) {
+                                        return true;
+                                    }
+                                    return 0 === compare(cellValue, filterString);
+                                } else {
+                                    if (filteringIgnoreCase) {
+                                        cellValue = cellValue.toLowerCase();
+                                        filterString = filterString.toLowerCase();
+                                    }
+                                    return c.filterFunction(cellValue, filterString);
+                                }
+                            }
+                            return true;
+                        }
+                        return true;
+                    }) : true;
+                }));
+            }
+            this.set("filteredContent",filteredContent);
+        },
         sendAction() {
             this.sendAction.apply(this, arguments);
         },
