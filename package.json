@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-idcos",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "description": "The default blueprint for ember-cli addons.",
   "directories": {
     "doc": "doc",
