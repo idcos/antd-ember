@@ -433,7 +433,7 @@ export default Component.extend({
      * @type {Ember.Object[]}
      * @name ModelsTable#filteredContent
      */
-    filteredContent: computed('filterString', 'data.[]', 'useFilteringByColumns', 'processedColumns.@each.filterString', function() {
+    filteredContent: computed('data.[]', 'useFilteringByColumns', 'processedColumns.@each.filterString', function() {
         const {
             processedColumns,
             data,
