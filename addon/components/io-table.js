@@ -423,10 +423,25 @@ export default Component.extend({
     gotoForwardEnabled: computed('currentPageNumber', 'pagesCount', function() {
         return get(this, 'currentPageNumber') < get(this, 'pagesCount');
     }),
+    /*
+    * 监听搜索内容，在搜索内容为空时，显示全部数据
+    */
     filterStringIsNone: Ember.observer('filterString', function() {
         var filterString=this.get("filterString");
         if(filterString==""||filterString==undefined){
             this.send("searchAction",this.get("filterString"));
+        }
+    }),
+    /*
+    * 监听键盘是否为回车,如果键值为13则判断当前搜索内容，并触发searchAction
+    */
+    keypressObserver: observer('keypressCode', function() {
+        if (get(this, 'keypressCode')==13) {
+            var filterString=this.get("filterString");
+            if(filterString!=""&&filterString!=undefined){
+                this.send("searchAction",this.get("filterString"));
+            }
+            this.set("keypressCode",null);
         }
     }),
     /**
