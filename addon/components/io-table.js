@@ -958,6 +958,13 @@ export default Component.extend({
             const showIndexNumber = this.get('showIndexNumber');
             data.forEach((it, index) => {
                 set(it, '__index', index + indexNumberBase);
+                processedColumns.forEach(c => {
+                    const propertyName = get(c, 'propertyName');
+                    if (propertyName) {
+                        var cellValue = '' + get(it, propertyName);
+                        set(it, propertyName + '__pinyin', pinyinTranslator.getFullChars(cellValue));              
+                    }
+                });
             });
 
             // global search
@@ -965,24 +972,27 @@ export default Component.extend({
                 return processedColumns.length ? processedColumns.any(c => {
                     const propertyName = get(c, 'propertyName');
                     if (propertyName) {
-                        var cellValue = '' + get(row, propertyName);
+                        var cellValue = '' + get(row, propertyName + '__pinyin');
                         if (filteringIgnoreCase) {
                             cellValue = cellValue.toLowerCase();
                             filterString = filterString.toLowerCase();
                         }
-                        return -1 !== cellValue.indexOf(filterString);
+                        return defaultFilter(cellValue, filterString);
                     }
                     return false;
                 }) : true;
             });
-            var filteredContent=null;
+            
+            var filterData=A([]);
             if (!useFilteringByColumns) {
-                filteredContent=A(globalSearch);
+                filterData=A(globalSearch);
             }else{
-                filteredContent = A(globalSearch.filter(row => {
+                // search by each column
+                filterData=A(globalSearch.filter(row => {
                     return processedColumns.length ? processedColumns.every(c => {
                         const propertyName = get(c, 'propertyName');
                         if (propertyName) {
+                            var cellValuePinyin = '' + get(row, propertyName + '__pinyin');
                             var cellValue = '' + get(row, propertyName);
                             if (get(c, 'useFilter')) {
                                 var filterString = get(c, 'filterString');
@@ -994,9 +1004,11 @@ export default Component.extend({
                                 } else {
                                     if (filteringIgnoreCase) {
                                         cellValue = cellValue.toLowerCase();
+                                        cellValuePinyin = cellValuePinyin.toLowerCase();
                                         filterString = filterString.toLowerCase();
                                     }
-                                    return c.filterFunction(cellValue, filterString);
+
+                                    return c.filterFunction(cellValuePinyin, filterString);
                                 }
                             }
                             return true;
@@ -1005,7 +1017,7 @@ export default Component.extend({
                     }) : true;
                 }));
             }
-            this.set("filteredContent",filteredContent);
+            this.set("filteredContent",filterData);
         },
         sendAction() {
             this.sendAction.apply(this, arguments);
