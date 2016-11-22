@@ -89,7 +89,7 @@ default Ember.Controller.extend({
         "cityWithHtml": "<i>Moscow</i>"
     }, {
         "id": 10,
-        "firstName": "Chester",
+        "firstName": "陈A",
         "lastName": "Khan",
         "age": 31,
         "city": "Dhaka",
