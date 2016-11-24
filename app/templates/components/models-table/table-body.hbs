@@ -1,16 +1,33 @@
 <tbody class="io-table-tbody">
-{{#if allColumnsAreHidden}}
-  <tr><td colspan={{processedColumns.length}} class="{{classes.noDataCell}}">{{{messages.allColumnsAreHidden}}}</td></tr>
-{{else}}
-  {{#if visibleContent.length}}
-    {{#each visibleContent as |record|}}
-      {{partial rowTemplate}}
-    {{/each}}
+  {{#if allColumnsAreHidden}}
+    <tr><td colspan={{processedColumns.length}} class="{{classes.noDataCell}}">{{{messages.allColumnsAreHidden}}}</td></tr>
   {{else}}
-    <tr>
-    	{{#if showIndexNumber}} <td></td> {{/if}}
-    	<td colspan={{processedColumns.length}}>{{{messages.noDataToShow}}}</td>
-    </tr>
+    {{#if loading}}
+      <tr>
+        <td colspan="{{count processedColumns.length}}" class="{{classes.noDataCell}}">
+          <div class="loading-spin" style="margin-top: 20vh;margin-bottom: 10vh;">
+            <div class="io-spin io-spin-spining">
+                <span class="io-spin-dot io-spin-dot-first">
+                </span>
+                <span class="io-spin-dot io-spin-dot-second">
+                </span>
+                <span class="io-spin-dot io-spin-dot-third">
+                </span>
+            </div>
+          </div>
+        </td>
+      </tr>
+    {{else}}
+      {{#if visibleContent.length}}
+        {{#each visibleContent as |record|}}
+          {{partial rowTemplate}}
+        {{/each}}
+      {{else}}
+        <tr>
+          {{#if showIndexNumber}} <td></td> {{/if}}
+          <td colspan={{processedColumns.length}}>{{{messages.noDataToShow}}}</td>
+        </tr>
+      {{/if}}
+    {{/if}}
   {{/if}}
-{{/if}}
 </tbody>

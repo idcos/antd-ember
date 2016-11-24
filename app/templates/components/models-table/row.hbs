@@ -8,7 +8,7 @@
       <td class={{column.className}}>
         {{!-- max width limited--}}
         {{#if column.maxWidth}}
-          <div class="column-wrapper" style="max-width: {{column.maxWidth}}">
+          <div class="column-wrapper" style="{{column.style}} max-width: {{column.maxWidth}}">
             {{#if column.template}}
               {{partial column.template}}
             {{else}}

@@ -2,7 +2,7 @@
 	<form class="globalSearch pull-right" action="">
 		<label>
 			<span role="form-item-input" type="text" class="ember-view form-item io-input-wrapper io-input-sm">
-			    {{input type="text" style="float: right;" placeholder="输入关键字回车搜索" value=filterString class="io-input" autocomplete="off" enter=(action 'searchAction' filterString)}}
+			    {{input type="text" style="float: right;" placeholder="输入关键字回车搜索" value=filterString class="io-input" autocomplete="off" enter=(action 'enterAction' filterString)}}
 		    </span>
 		</label>
 	</form>

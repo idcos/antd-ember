@@ -439,12 +439,8 @@ export default Component.extend({
         if (get(this, 'keypressCode')==13) {
             var filterString=this.get("filterString");
             if(filterString!=""&&filterString!=undefined){
-                var pinyin = new RegExp("^[A-Za-z]+$"); // 创建正则表达式对象。     
-                if(filterString.match(pinyin)){
-                    this.send("searchAction1",this.get("filterString"));
-                }else{
-                    this.send("searchAction",this.get("filterString"));
-                }
+                this.set("loading",true);
+                this.send("searchAction",this.get("filterString"));
             }
             this.set("keypressCode",null);
         }
@@ -650,10 +646,16 @@ export default Component.extend({
         var visibleContentLength = get(this, 'visibleContent.length');
         var dataLength = get(this, 'data.length');
         var currentPageNumber = get(this, 'currentPageNumber');
+
+
+        this.set("loading",false);
+        
         if (!visibleContentLength && dataLength && currentPageNumber !== 1) {
             set(this, 'currentPageNumber', 1);
         }
     },
+
+
     /**
      * @method contentChangedAfterPolling
      * @name ModelsTable#contentChangedAfterPolling
@@ -949,7 +951,14 @@ export default Component.extend({
          * [indexNumberBase description]
          * @type {[type]}
          */
-        searchAction1: function(filterString){
+        enterAction: function(filterString){
+            var filterString=this.get("filterString");
+            if(filterString!=""||filterString!=undefined){
+                this.set("loading",true);
+                this.send("searchAction",this.get("filterString"));
+            }
+        },
+        searchAction: function(filterString){
             const {
                 processedColumns,
                 data,
@@ -966,33 +975,48 @@ export default Component.extend({
              */
             const indexNumberBase = this.get('indexNumberBase') || 0;
             const showIndexNumber = this.get('showIndexNumber');
-            data.forEach((it, index) => {
-                set(it, '__index', index + indexNumberBase);
-                processedColumns.forEach(c => {
-                    const propertyName = get(c, 'propertyName');
-                    if (propertyName) {
-                        var cellValue = '' + get(it, propertyName);
-                        set(it, propertyName + '__pinyin', pinyinTranslator.getFullChars(cellValue));              
-                    }
+            if(filterString.match(new RegExp("^[A-Za-z]+$"))){
+                data.forEach((it, index) => {
+                    set(it, '__index', index + indexNumberBase);
+                    processedColumns.forEach(c => {
+                        const propertyName = get(c, 'propertyName');
+                        if (propertyName) {
+                            var cellValue = '' + get(it, propertyName);
+                            set(it, propertyName + '__pinyin', pinyinTranslator.getFullChars(cellValue));              
+                        }
+                    });
                 });
-            });
+            }else{
+                data.forEach((it, index) => {
+                    set(it, '__index', index + indexNumberBase);
+                });
+            }
+            
 
             // global search
             var globalSearch = data.filter(function(row) {
                 return processedColumns.length ? processedColumns.any(c => {
                     const propertyName = get(c, 'propertyName');
                     if (propertyName) {
-                        var cellValue = '' + get(row, propertyName + '__pinyin');
+                        var cellValue = '' + get(row, propertyName);
+                        if(filterString.match(new RegExp("^[A-Za-z]+$"))){
+                            cellValue = '' + get(row, propertyName + '__pinyin');
+                        }
                         if (filteringIgnoreCase) {
                             cellValue = cellValue.toLowerCase();
                             filterString = filterString.toLowerCase();
                         }
-                        return defaultFilter(cellValue, filterString);
+                        if(filterString.match(new RegExp("^[A-Za-z]+$"))){
+                            return defaultFilter(cellValue, filterString);
+                        }else{
+                            return -1 !== cellValue.indexOf(filterString);
+                        }
+                        
                     }
                     return false;
                 }) : true;
             });
-            
+           
             var filterData=A([]);
             if (!useFilteringByColumns) {
                 filterData=A(globalSearch);
@@ -1017,83 +1041,11 @@ export default Component.extend({
                                         cellValuePinyin = cellValuePinyin.toLowerCase();
                                         filterString = filterString.toLowerCase();
                                     }
-
-                                    return c.filterFunction(cellValuePinyin, filterString);
-                                }
-                            }
-                            return true;
-                        }
-                        return true;
-                    }) : true;
-                }));
-            }
-            this.set("filteredContent",filterData);
-        },
-        searchAction: function(filterString){
-            const {
-                processedColumns,
-                data,
-                useFilteringByColumns,
-                filteringIgnoreCase
-            } = getProperties(this, 'processedColumns', 'data', 'useFilteringByColumns', 'filteringIgnoreCase');
-            var filterString = get(this, 'filterString');
-            if (!data) {
-                return A([]);
-            }
-
-            // 对filterString进行判断
-            var pinyin = new RegExp("^[A-Za-z]+$"); // 创建正则表达式对象。     
-            if(filterString.match(pinyin)){
-               this.send("searchAction1",this.get("filterString"));
-               return;
-            }
-            /**
-             * [indexNumberBase description]
-             * @type {[type]}
-             */
-            const indexNumberBase = this.get('indexNumberBase') || 0;
-            const showIndexNumber = this.get('showIndexNumber');
-            data.forEach((it, index) => {
-                set(it, '__index', index + indexNumberBase);
-            });
-
-            // global search
-            var globalSearch = data.filter(function(row) {
-                return processedColumns.length ? processedColumns.any(c => {
-                    const propertyName = get(c, 'propertyName');
-                    if (propertyName) {
-                        var cellValue = '' + get(row, propertyName);
-                        if (filteringIgnoreCase) {
-                            cellValue = cellValue.toLowerCase();
-                            filterString = filterString.toLowerCase();
-                        }
-                        return -1 !== cellValue.indexOf(filterString);
-                    }
-                    return false;
-                }) : true;
-            });
-            var filterData=A([]);
-            if (!useFilteringByColumns) {
-                filterData=A(globalSearch);
-            }else{
-                filterData = A(globalSearch.filter(row => {
-                    return processedColumns.length ? processedColumns.every(c => {
-                        const propertyName = get(c, 'propertyName');
-                        if (propertyName) {
-                            var cellValue = '' + get(row, propertyName);
-                            if (get(c, 'useFilter')) {
-                                var filterString = get(c, 'filterString');
-                                if (get(c, 'filterWithSelect')) {
-                                    if ('' === filterString) {
-                                        return true;
+                                    if(filterString.match(new RegExp("^[A-Za-z]+$"))){
+                                        return c.filterFunction(cellValuePinyin, filterString);
+                                    }else{
+                                        return c.filterFunction(cellValue, filterString);
                                     }
-                                    return 0 === compare(cellValue, filterString);
-                                } else {
-                                    if (filteringIgnoreCase) {
-                                        cellValue = cellValue.toLowerCase();
-                                        filterString = filterString.toLowerCase();
-                                    }
-                                    return c.filterFunction(cellValue, filterString);
                                 }
                             }
                             return true;

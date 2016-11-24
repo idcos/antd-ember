@@ -14,7 +14,8 @@ default Ember.Controller.extend({
     }, {
         "propertyName": "firstName",
         "title": "First Name",
-        "width": "200px"
+        "width": "200px",
+        "maxWidth":"400px"
     }, {
         "propertyName": "lastName",
         "title": "Last Name",
