@@ -16,8 +16,8 @@
 	</ul>
 	<div class="demo">
 		<div class="demo-example">
-			 {{io-tree 
-			 	model=model 
+			 {{io-tree
+			 	model=model
 			 	selected=selected
 			 	treeNodeTemplate='snippets/tree-node-template'
 			 	onSelectNode='onSelectNode'}}
@@ -25,8 +25,8 @@
 		<div class="demo-code">
 			<div class="highlight">
 				<pre>
-				<code class="language-html"> 
-// tree Model example				
+				<code class="language-html">
+// tree Model example
 const family = {
     title: 'Family',
     id: 'Family',
@@ -45,8 +45,8 @@ const family = {
     }]
 };
 
- \{{io-tree 
-    model=family 
+ \{{io-tree
+    model=family
     selected=selected
     treeNodeTemplate='snippets/tree-node-template'
     onSelectNode='onSelectNode'}}
@@ -68,8 +68,8 @@ const family = {
 	</p>
 	<div class="demo">
 		<div class="demo-example">
-			 {{io-tree 
-			 	model=model 
+			 {{io-tree
+			 	model=model
 			 	selected=selected
 			 	in-multi-selection=true
 			 	multi-selection=multi
@@ -82,10 +82,10 @@ const family = {
 		<div class="demo-code">
 			<div class="highlight">
 				<pre>
-				<code class="language-html"> 
+				<code class="language-html">
 
- \{{io-tree 
-    model=family 
+ \{{io-tree
+    model=family
     in-multi-selection=true
     multi-selection=multi
     selected=selected
@@ -101,3 +101,51 @@ const family = {
 	eq <b>{{person.firstName}} {{person.lastName}}</b>!
 {{/if}} --}}
 
+
+<section class="markdown api-container io-table">
+<h2 id="API"><span>API</span></h2>
+<h3 id="Tree"><span>io-tree性</span></h3>
+<table>
+	<thead>
+	<tr>
+		<th>参数</th>
+		<th>说明</th>
+		<th>类型</th>
+		<th>默认值</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>checked</td>
+			<td>指定当前是否选中，默认未被选中</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+		<tr>
+			<td>io-multi-selection</td>
+			<td>选中</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+		<tr>
+			<td>multi-selection</td>
+			<td>multi</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+		<tr>
+			<td>treeNodeTemplate</td>
+			<td>目录树模板</td>
+			<td>template</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>onSelectNode</td>
+			<td>选择节点触发事件</td>
+			<td>function</td>
+			<td>-</td>
+		</tr>
+	</tbody>
+</table>
+
+</section>

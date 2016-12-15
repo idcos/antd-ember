@@ -92,10 +92,10 @@ onSearch: function(value) {
 	</div>
 	<div class="demo">
 		<div class="demo-example">
-			{{io-select 
-				width=500 
-				value=values 
-				multiple=true 
+			{{io-select
+				width=500
+				value=values
+				multiple=true
 				showDropdownSearch=true
 				options=options}}
 		</div>
@@ -164,8 +164,8 @@ comboboxOnChange: function() {
 	<h2>树选择</h2>
 	<div class="demo">
 		<div class="demo-example">
-			{{io-tree-select 
-				treeData=treeData 
+			{{io-tree-select
+				treeData=treeData
 				value=treeSelectedValue
 				treeNodeTemplate="snippets/tree-node-template"
 				}}
@@ -194,8 +194,8 @@ const treeData = [{
     id: '0-1-1',
   }],
 }];
-\{{io-tree-select 
-	treeData=treeData 
+\{{io-tree-select
+	treeData=treeData
 	value=treeSelectedValue
 	treeNodeTemplate="snippets/tree-node-template"}}
 
@@ -205,4 +205,100 @@ const treeData = [{
 </section>
 
 
+<section class="markdown api-container io-table">
+<h2 id="API"><span>API</span></h2>
+<h3 id="Select"><span>io-select属性</span></h3>
+<table>
+	<thead>
+	<tr>
+		<th>参数</th>
+		<th>说明</th>
+		<th>类型</th>
+		<th>默认值</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>width</td>
+			<td>自定义下拉选择框宽度</td>
+			<td>Number</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>value</td>
+			<td>默认选中数据的值</td>
+			<td>String</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>placeholder</td>
+			<td>默认提示文字</td>
+			<td>String</td>
+			<td>请选择</td>
+		</tr>
+		<tr>
+			<td>options</td>
+			<td>下拉显示数据对象</td>
+			<td>Object</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>multiple</td>
+			<td>多项选择</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+		<tr>
+			<td>showDropdownSearch</td>
+			<td>过滤数据</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+		<tr>
+			<td>onSearch</td>
+			<td>支持过滤数据时，触发方法</td>
+			<td>function</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>onChange</td>
+			<td>选中数据改变触发方法</td>
+			<td>function</td>
+			<td>-</td>
+		</tr>
+	</tbody>
+</table>
 
+<h3 id="Tree-select"><span>io-tree-select属性</span></h3>
+<table>
+	<thead>
+	<tr>
+		<th>参数</th>
+		<th>说明</th>
+		<th>类型</th>
+		<th>默认值</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>treeData</td>
+			<td>目录树数据</td>
+			<td>Object</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>value</td>
+			<td>默认选中数据的值</td>
+			<td>function</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>treeNodeTemplate</td>
+			<td>自定义目录树节点模板</td>
+			<td>String</td>
+			<td>snippets/tree-node-template</td>
+		</tr>
+	</tbody>
+</table>
+
+</section>

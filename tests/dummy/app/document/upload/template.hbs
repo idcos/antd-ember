@@ -7,7 +7,7 @@
 		<div class="demo-example">
 			{{#io-upload
 				action="/srv/app/ext/import/9e62f0a5-f69c-41aa-9b65-2420a7345f2b/dpUnit"
-				name="importFile" 
+				name="importFile"
 				onChange="onChange"}}
 				{{#io-button type="ghost"}} 开始上传 {{/io-button}}
 			{{/io-upload}}
@@ -20,7 +20,7 @@
 // template
 \{{#io-upload
 	action="/srv/app/ext/import/9e62f0a5-f69c-41aa-9b65-2420a7345f2b/dpUnit"
-	name="importFile" 
+	name="importFile"
 	onChange="onChange"}}
 	\{{#io-button type="ghost"}} 开始上传 \{{/io-button}}
 \{{/io-upload}}
@@ -33,7 +33,7 @@ onChange(ev) {
 
     if (ev.file.status === 'done') {
         console.log(`${ev.file.name} 上传成功。`);
-    } 
+    }
 
     if (ev.file.status === 'error') {
         console.log(ev.file.response);
@@ -41,14 +41,14 @@ onChange(ev) {
     }
 }
 </code></pre>
-			</div>			
+			</div>
 		</div>
 	</div>
 </section>
 
 
 <section class="demo-type">
-	
+
 	{{#io-form}}
 		{{io-input type="file" id="fileUpload" value=file}}
 		<br>
@@ -59,4 +59,38 @@ onChange(ev) {
 </section>
 
 
+<section class="markdown api-container io-table">
+<h2 id="API"><span>API</span></h2>
+<h3 id="Upload"><span>io-upload属性</span></h3>
+<table>
+	<thead>
+	<tr>
+		<th>参数</th>
+		<th>说明</th>
+		<th>类型</th>
+		<th>默认值</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>checked</td>
+			<td>指定当前是否选中，默认未被选中</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+		<tr>
+			<td>disabled</td>
+			<td>禁用</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+		<tr>
+			<td>onChange</td>
+			<td>选择完成后的回调方法</td>
+			<td>function</td>
+			<td>-</td>
+		</tr>
+	</tbody>
+</table>
 
+</section>

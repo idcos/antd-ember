@@ -1,3 +1,104 @@
 <h1>Datepicker 日期选择器</h1>
 
-{{io-datepicker}}
+<div class="demo-type">
+	<h2>日期选择</h2>
+	<p> value 值为双向绑定 </p>
+	<div class="demo">
+		<div class="demo-example">
+			{{io-datepicker}}
+		</div>
+		<div class="demo-code">
+			<div class="highlight">
+                <pre><code class="language-html">
+                \{{io-datepicker}}
+                </code></pre>
+			</div>
+		</div>
+	</div>
+</div>
+
+<section class="demo-type">
+	<div class="demo-doc">
+		<p>时间选择</p>
+	</div>
+	<div class="demo">
+		<div class="demo-example">
+			{{io-timepicker}}
+		</div>
+		<div class="demo-code">
+			<div class="highlight">
+			<pre><code class="language-html">
+			\{{io-timepicker}}
+			</code></pre>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+
+<section class="markdown api-container io-table">
+<h2 id="API"><span>API</span></h2>
+<h3 id="Button"><span>io-datepicker属性</span></h3>
+<table>
+	<thead>
+	<tr>
+		<th>参数</th>
+		<th>说明</th>
+		<th>类型</th>
+		<th>默认值</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>format</td>
+			<td>日期格式</td>
+			<td>String</td>
+			<td>YYYY-MM-DD</td>
+		</tr>
+		<tr>
+			<td>size</td>
+			<td>弹出日期界面大小</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+		<tr>
+			<td>disabledDate</td>
+			<td>禁止选择日期</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+	</tbody>
+</table>
+<h3 id="Button"><span>io-datetime属性</span></h3>
+<table>
+	<thead>
+	<tr>
+		<th>参数</th>
+		<th>说明</th>
+		<th>类型</th>
+		<th>默认值</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>format</td>
+			<td>时间格式</td>
+			<td>String</td>
+			<td>HH:mm:ss</td>
+		</tr>
+		<tr>
+			<td>size</td>
+			<td>弹出日期界面大小</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+		<tr>
+			<td>disabled</td>
+			<td>禁用</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+	</tbody>
+</table>
+</section>

@@ -7,20 +7,45 @@
 		<div class="demo-example">
 			{{io-switch checked=true}}
 			{{io-switch checked=false}}
-			{{#io-switch checked=false}}
+			{{#io-switch}}
 				<span class="checked">开</span>
-				<span class="unchecked">关</span>	
+				<span class="unchecked">关</span>
 			{{/io-switch}}
 		</div>
 		<div class="demo-code">
 			<pre> <code class="language-html">
-\{{io-switch checked=true}}
-\{{io-switch checked=false}}
-\{{#io-switch checked=false}}
-	&lt;span class="checked"&gt;开&lt;/span&gt;
-	&lt;span class="unchecked"&gt;关&lt;/span&gt;	
-\{{/io-switch}}
+				\{{io-switch checked=true}}
+				\{{io-switch checked=false}}
+				\{{#io-switch checked=false}}
+					&lt;span class="checked"&gt;开&lt;/span&gt;
+					&lt;span class="unchecked"&gt;关&lt;/span&gt;
+				\{{/io-switch}}
 			</code></pre>
 		</div>
 	</div>
 </div>
+
+
+<section class="markdown api-container io-table">
+<h2 id="API"><span>API</span></h2>
+<h3 id="Button"><span>io-checkbox属性</span></h3>
+<table>
+	<thead>
+	<tr>
+		<th>参数</th>
+		<th>说明</th>
+		<th>类型</th>
+		<th>默认值</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>checked</td>
+			<td>默认未被选中</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+	</tbody>
+</table>
+
+</section>

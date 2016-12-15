@@ -14,8 +14,7 @@ for (let i = 0; i < 20; i++) {
   mockData.push(data);
 }
 
-export
-default Ember.Controller.extend({
+export default Ember.Controller.extend({
     dataSource: mockData,
     targetValues: targetKeys,
     actions: {

@@ -16,7 +16,7 @@
 		<div class="demo-code">
 			<div class="highlight">
 				<pre>
-				<code class="language-html"> 
+				<code class="language-html">
    \{{io-table
         columns=columns
         showIndexNumber=true
@@ -40,7 +40,7 @@
     <div class="demo-code">
       <div class="highlight">
         <pre>
-        <code class="language-html"> 
+        <code class="language-html">
   // 每个 column 需要定义宽度， 不然 header 和 body 无法对齐
   \{{io-table
         columns=columns
@@ -51,7 +51,301 @@
     </div>
   </div>
 </div>
+<section class="markdown api-container io-table">
+<h2 id="API"><span>API</span></h2>
+<h3 id="Button"><span>io-checkbox属性</span></h3>
+<table>
+  <thead>
+  <tr>
+	  <th>参数</th>
+	  <th>说明</th>
+	  <th>类型</th>
+	  <th>默认值</th>
+  </tr>
+  </thead>
+  <tbody>
+	  <tr>
+		  <td>data</td>
+		  <td>所有表记录</td>
+		  <td>Ember.Object[]</td>
+		  <td>[]</td>
+	  </tr>
+	  <tr>
+		  <td>columns</td>
+		  <td>所有表列，每个列可以具有这样的字段：</td>
+		  <td>Object[]</td>
+		  <td>[]</td>
+	  </tr>
+	  <tr>
+		  <td>multipleColumnsSorting</td>
+		  <td>确定是否应使用多列排序</td>
+		  <td>Boolean</td>
+		  <td>true</td>
+	  </tr>
+	  <tr>
+		  <td>useNumericPagination</td>
+		  <td>确定是否应使用数字分页</td>
+		  <td>Boolean</td>
+		  <td>false</td>
+	  </tr>
+	  <tr>
+		  <td>showTableFooter</td>
+		  <td>确定是否应在页面上显示表页脚</td>
+		  <td>Boolean</td>
+		  <td>true</td>
+	  </tr>
+	  <tr>
+		  <td>showColumnsDropdown</td>
+		  <td>确定是否应显示列 - 下拉列表</td>
+		  <td>Boolean</td>
+		  <td>true</td>
+	  </tr>
+	  <tr>
+		  <td>useFilteringByColumns</td>
+		  <td>确定是否应该向用户提供按列过滤</td>
+		  <td>Boolean</td>
+		  <td>true</td>
+	  </tr>
+	  <tr>
+		  <td>filteringIgnoreCase</td>
+		  <td>确定过滤（全局和按列）是否应忽略大小写</td>
+		  <td>Boolean</td>
+		  <td>false</td>
+	  </tr>
+	  <tr>
+		  <td>showGlobalFilter</td>
+		  <td>确定是否应显示“全局过滤器”字段</td>
+		  <td>Boolean</td>
+		  <td>true</td>
+	  </tr>
+	  <tr>
+		  <td>displayDataChangedAction</td>
+		  <td>操作名称在用户互动时发送</td>
+		  <td>String</td>
+		  <td>displayDataChanged</td>
+	  </tr>
+	  <tr>
+		  <td>sendDisplayDataChangedAction</td>
+		  <td>确定是否应发送针对用户互动的操作</td>
+		  <td>Boolean</td>
+		  <td>false</td>
+	  </tr>
+	  <tr>
+		  <td>columnsAreUpdateable</td>
+		  <td>确定如果列被更改（观察到propertyName和模板），是否将更新processedColumns</td>
+		  <td>Boolean</td>
+		  <td>false</td>
+	  </tr>
+	  <tr>
+		  <td>columnFieldsToCheckUpdate</td>
+		  <td>列字段，其被观察以更新所示的表格列。 它仅在columnsAreUpdateable为true时使用</td>
+		  <td>String[]</td>
+		  <td>propertyName,template</td>
+	  </tr>
+	  <tr>
+		  <td>simplePaginationTemplate</td>
+		  <td>分页自定义模板的路径。 如果useNumericPagination为true，则忽略</td>
+		  <td>String</td>
+		  <td>components/models-table/simple-pagination</td>
+	  </tr>
+	  <tr>
+		  <td>numericPaginationTemplate</td>
+		  <td>带有数字分页的自定义模板的路径。 如果useNumericPagination为true，则使用</td>
+		  <td>String</td>
+		  <td>components/models-table/numeric-pagination</td>
+	  </tr>
+	  <tr>
+		  <td>tableFooterTemplate</td>
+		  <td>具有表页脚的自定义模板的路径。 如果showTableFooter为true，则使用</td>
+		  <td>String</td>
+		  <td>components/models-table/table-footer</td>
+	  </tr>
+	  <tr>
+		  <td>globalFilterTemplate</td>
+		  <td>具有全局过滤器的自定义模板的路径。如果showGlobalFilter为true，则使用</td>
+		  <td>String</td>
+		  <td>components/models-table/global-filter</td>
+	  </tr>
+	  <tr>
+		  <td>columnsDropdownTemplate</td>
+		  <td>使用列下拉菜单的自定义模板路径。如果showColumnsDropdown为true，则使用</td>
+		  <td>String</td>
+		  <td>components/models-table/simple-pagination</td>
+	  </tr>
+	  <tr>
+		  <td>rowTemplate</td>
+		  <td>包含表格行的自定义模板的路径</td>
+		  <td>String</td>
+		  <td>components/models-table/row</td>
+	  </tr>
+	  <tr>
+		  <td>customMessages</td>
+		  <td>覆盖组件中使用的消息。默认值：
+			  messages: Ember.Object.create({
+				  "searchLabel": "Search:",
+				  "columns-title": "Columns",
+				  "columns-showAll": "Show All",
+				  "columns-hideAll": "Hide All",
+				  "columns-restoreDefaults": "Restore Defaults",
+				  "tableSummary": "Show %@ - %@ of %@",
+				  "allColumnsAreHidden": "All columns are hidden. Use <strong>columns</strong>-dropdown to show some of them",
+				  "noDataToShow": "No records to show"
+			  })
+		  </td>
+		  <td>Object</td>
+		  <td>{}</td>
+	  </tr>
+	  <tr>
+		  <td>customIcons</td>
+		  <td>覆盖组件中使用的图标类。默认值：
+			  icons: Ember.Object.create({
+				  "sort-asc": "glyphicon glyphicon-triangle-bottom",
+				  "sort-desc": "glyphicon glyphicon-triangle-top",
+				  "column-visible": "glyphicon glyphicon-check",
+				  "column-hidden": "glyphicon glyphicon-unchecked",
+				  "nav-first": "glyphicon glyphicon-chevron-left",
+				  "nav-prev": "glyphicon glyphicon-menu-left",
+				  "nav-next": "glyphicon glyphicon-menu-right",
+				  "nav-last": "glyphicon glyphicon-chevron-right",
+				  "caret": "caret"
+			  })
+		  </td>
+		  <td>Object</td>
+		  <td>{}</td>
+	  </tr>
+	  <tr>
+		  <td>customClasses</td>
+		  <td>覆盖组件中使用的css类（不包括图标）。默认值：
+			  classes: Ember.Object.create({
+				  "outerTableWrapper": "models-table-wrapper",
+				  "innerTableWrapper": "inner-table-wrapper",
+				  "table": "table table-striped table-bordered table-condensed",
+				  "globalFilterWrapper": "pull-left",
+				  "columnsDropdownWrapper": "pull-right columns-dropdown",
+				  "columnsDropdownButtonWrapper": "btn-group",
+				  "columnsDropdown": "dropdown-menu pull-right",
+				  "theadCell": "table-header",
+				  "tfooterWrapper": "table-footer clearfix",
+				  "footerSummary": "table-summary",
+				  "footerSummaryNumericPagination": "col-md-3 col-sm-3",
+				  "footerSummaryDefaultPagination": "col-md-8 col-sm-8",
+				  "pageSizeWrapper": "col-md-2 col-sm-2",
+				  "pageSizeSelectWrapper": "pull-right",
+				  "paginationWrapper": "table-nav",
+				  "paginationWrapperNumeric": "col-md-7 col-sm-7",
+				  "paginationWrapperDefault": "col-md-2 col-sm-2",
+				  "buttonDefault": "btn btn-default",
+				  "noDataCell": ""
+			  })
+		  </td>
+		  <td>Object</td>
+		  <td>{}</td>
+	  </tr>
+	  <tr>
+		  <td>useFixedHeader</td>
+		  <td>固定表头</td>
+		  <td>Boolean</td>
+		  <td>false</td>
+	  </tr>
+	  <tr>
+		  <td>showIndexNumber</td>
+		  <td>显示索引</td>
+		  <td>Boolean</td>
+		  <td>false</td>
+	  </tr>
+	  <tr>
+		  <td>indexNumberBase</td>
+		  <td>排序</td>
+		  <td>Number</td>
+		  <td>1</td>
+	  </tr>
+  </tbody>
+</table>
 
+</section>
+
+<section class="markdown api-container io-table">
+<h2 id="API"><span>API</span></h2>
+<h3 id="Table"><span>io-table   clumns属性</span></h3>
+<table>
+  <thead>
+  <tr>
+	  <th>参数</th>
+	  <th>说明</th>
+	  <th>类型</th>
+	  <th>默认值</th>
+  </tr>
+  </thead>
+  <tbody>
+	  <tr>
+		  <td>propertyName</td>
+		  <td>当前列中显示的数据对象的字段名称。如果未提供，则忽略当前列的排序和过滤选项</td>
+		  <td>String</td>
+		  <td>-</td>
+	  </tr>
+	  <tr>
+		  <td>title</td>
+		  <td>列的标题。如果未提供，则使用大写的propertyName</td>
+		  <td>String</td>
+		  <td>-</td>
+	  </tr>
+	  <tr>
+		  <td>sortedBy</td>
+		  <td>按当前列排序的字段名称。如果未提供，则使用propertyName</td>
+		  <td>String</td>
+		  <td>-</td>
+	  </tr>
+	  <tr>
+		  <td>isHidden</td>
+		  <td>默认情况下，当前列是隐藏的</td>
+		  <td>Boolean</td>
+		  <td>false</td>
+	  </tr>
+	  <tr>
+		  <td>mayBeHidden</td>
+		  <td>可能隐藏。此字段确定列是否显示在列下拉列表中。如果mayBeHidden为true且isHidden对于当前列也为true，则此列始终为隐藏</td>
+		  <td>Boolean</td>
+		  <td>false</td>
+	  </tr>
+	  <tr>
+		  <td>filterWithSelect</td>
+		  <td>如果为true，则选择下拉列表将用于按当前列进行过滤。选项是数据的唯一值 data.@each.${propertyName}</td>
+		  <td>Boolean</td>
+		  <td>false</td>
+	  </tr>
+	  <tr>
+		  <td>predefinedFilterOptions</td>
+		  <td>选择下拉列表的预定义选项列表。如果filterWithSelect为true，则使用。它不会被数据覆盖 data.@each.${propertyName}</td>
+		  <td>String[]</td>
+		  <td>[]</td>
+	  </tr>
+	  <tr>
+		  <td>className</td>
+		  <td>当前列中单元格的自定义类名</td>
+		  <td>String</td>
+		  <td>false</td>
+	  </tr>
+	  <tr>
+		  <td>filterFunction</td>
+		  <td>用于过滤行的自定义函数（如果filterWithSelect为false，则使用）</td>
+		  <td>Function</td>
+		  <td>-</td>
+	  </tr>
+	  <tr>
+		  <td>width</td>
+		  <td>css列的宽度</td>
+		  <td>String</td>
+		  <td>150</td>
+	  </tr>
+	  <tr>
+		  <td>maxWidth</td>
+		  <td>css列的最大宽度</td>
+		  <td>String</td>
+		  <td>-</td>
+	  </tr>
+  </tbody>
+</table>
+</section>
 <h2>API 参数说明</h2>
 
 <table class="table-striped table-bordered table-condensed table" style="display:block;" >
@@ -313,7 +607,3 @@
           </tr>
         </tbody>
       </table>
-
-
-
-

@@ -1,17 +1,48 @@
-<h1>未保存数据</h1>
+<h1>未保存数据 unsaveNotification</h1>
 
 <p>
 	在填写表单未完成的时候可能出现误操作，导致调整路由或者刷新页面， 这个时候为了避免信息丢失， 需要给用户提示
 </p>
 
-<p>
-	具体配置方法很简单， 只需要在控制器里边配置 unsaveNotification 属性
-	<br> <br>
-	<pre>unsaveNotification: {
-	// 是否有未保存的数据， 如果有就会提示错误
-	hasUnsaveData: false,
-	// 确认的信息 
-	text: '还有未保存的修改， 离开后所有数据将丢失'
-}
-	</pre>
-</p>
+<section class="demo-type">
+	<div class="demo-doc">
+		<h2>使用方法</h2>
+		<ol>
+			<li>
+				具体配置方法很简单， 只需要在控制器里边配置 unsaveNotification 属性
+			</li>
+		</ol>
+	</div>
+	<div class="demo">
+		<div class="demo-example" data-example-id="btn-tags">
+			unsaveNotification: {
+				<br>
+				// 是否有未保存的数据， 如果有就会提示错误
+				<br>
+				hasUnsaveData: false,
+				<br>
+				// 确认的信息
+				<br>
+				text: '还有未保存的修改， 离开后所有数据将丢失'
+				<br>
+			}
+		</div>
+		<div class="demo-code">
+			<div class="highlight">
+				<pre>
+					unsaveNotification: {
+						<br>
+						// 是否有未保存的数据， 如果有就会提示错误
+						<br>
+						hasUnsaveData: false,
+						<br>
+						// 确认的信息
+						<br>
+						text: '还有未保存的修改， 离开后所有数据将丢失'
+						<br>
+					}
+				</pre>
+			</div>
+		</div>
+	</div>
+</section>

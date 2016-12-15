@@ -1,79 +1,176 @@
-<h1>Alert 警告提示</h1>
+<div class="demo-type">
+	<h2>Alert 警告提示-类型</h2>
+	<div class="demo">
+		<div class="demo-example">
+			{{io-alert message="成功提示的文案" type="success"}}
+			{{io-alert message="消息提示的文案" type="info"}}
+			{{io-alert message="警告提示的文案" type="warn"}}
+			{{io-alert message="错误提示的文案" type="error"}}
+		</div>
+		<div class="demo-code">
+			<div class="highlight">
+				<pre><code class="language-html" data-lang="html">
+\{{io-alert message="成功提示的文案" type="success"}}
 
+\{{io-alert message="消息提示的文案" type="info"}}
 
-{{io-alert 
-	message="成功提示的文案" 
-	type="success"}}
-{{io-alert 
-	message="消息提示的文案" 
-	type="info"}}
-{{io-alert 
-	message="警告提示的文案" 
-	type="warn"}}
-{{io-alert 
-	message="错误提示的文案" 
-	type="error"}}
+\{{io-alert message="警告提示的文案" type="warn"}}
 
-<br>	
-
-{{io-alert 
-	message="警告提示的文案" 
-	type="warn" 
-	closable=true}}
-
-{{io-alert 
-	message="错误提示的文案" 
-	type="error"
-	description="错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍" 
-	closable=true}}
-
-
+\{{io-alert message="错误提示的文案" type="error"}}
+				</code></pre>
+			</div>
+		</div>
+	</div>
+</div>
 <br>
+<div class="demo-type">
+	<h2>Alert 警告提示-关闭</h2>
+	<div class="demo">
+		<div class="demo-example">
+			{{io-alert message="警告提示的文案" type="warn" closable=true}}
+			{{io-alert message="错误提示的文案" type="error" description="错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍" closable=true}}
+		</div>
+		<div class="demo-code">
+			<div class="highlight">
+				<pre><code class="language-html" data-lang="html">
+\{{io-alert message="警告提示的文案" type="warn" closable=true}}
 
-{{io-alert 
-	message="成功提示的文案" 
-	type="success"
-	showIcon=true}}
-{{io-alert 
-	message="消息提示的文案" 
-	type="info"
-	showIcon=true}}
-{{io-alert 
-	message="警告提示的文案" 
-	type="warn"
-	showIcon=true}}
-{{io-alert 
-	message="错误提示的文案" 
-	type="error"
-	showIcon=true}}
+\{{io-alert message="错误提示的文案" type="error" 
+description="错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介
+绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍" closable=true}}
+				</code></pre>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<div class="demo-type">
+	<h2>Alert 警告提示-图标</h2>
+	<div class="demo">
+		<div class="demo-example">
+			{{io-alert message="成功提示的文案" type="success" showIcon=true}}
+			{{io-alert message="消息提示的文案" type="info" showIcon=true}}
+			{{io-alert message="警告提示的文案" type="warn" showIcon=true}}
+			{{io-alert message="错误提示的文案" type="error" showIcon=true}}
+		</div>
+		<div class="demo-code">
+			<div class="highlight">
+				<pre><code class="language-html" data-lang="html">
+\{{io-alert message="成功提示的文案" type="success" showIcon=true}}
 
-{{io-alert 
-	message="成功提示的文案" 
-	description="成功提示的辅助性文字介绍成功提示的辅助性文字介绍成功提示的辅助性文字介绍成功提示的辅助性文字介绍"
-	type="success"
-	showIcon=true}}
-{{io-alert 
-	message="消息提示的文案" 
-	description="消息提示的辅助性文字介绍消息提示的辅助性文字介绍消息提示的辅助性文字介绍"
-	type="info"
-	showIcon=true}}
-{{io-alert 
-	message="警告提示的文案" 
-	description="警告提示的辅助性文字介绍警告提示的辅助性文字介绍"
-	type="warn"
-	showIcon=true}}
-{{io-alert 
-	message="错误提示的文案" 
-	description="错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍"
-	type="error"
-	showIcon=true}}
+\{{io-alert message="消息提示的文案" type="info" showIcon=true}}
 
-{{io-alert
-	message="消息提示的文案"
-	type="info"
-	closable=true
-	closeText="不再提醒"}}
+\{{io-alert message="警告提示的文案" type="warn" showIcon=true}}
+
+\{{io-alert message="错误提示的文案" type="error" showIcon=true}}
+				</code></pre>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<div class="demo-type">
+	<h2>Alert 警告提示-描述</h2>
+	<div class="demo">
+		<div class="demo-example">
+			{{io-alert message="成功提示的文案" description="成功提示的辅助性文字介绍成功提示的辅助性文字介绍成功提示的辅助性文字介绍成功提示的辅助性文字介绍" type="success" showIcon=true}}
+			{{io-alert message="消息提示的文案" description="消息提示的辅助性文字介绍消息提示的辅助性文字介绍消息提示的辅助性文字介绍" type="info" showIcon=true}}
+			{{io-alert message="警告提示的文案" description="警告提示的辅助性文字介绍警告提示的辅助性文字介绍" type="warn" showIcon=true}}
+			{{io-alert message="错误提示的文案" 
+			description="错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字
+			介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍" type="error" showIcon=true}}
+		</div>
+		<div class="demo-code">
+			<div class="highlight">
+				<pre><code class="language-html" data-lang="html">
+\{{io-alert message="成功提示的文案" 
+description="成功提示的辅助性文字介绍成功提示的辅助性文字介
+绍成功提示的辅助性文字介绍成功提示的辅助性文字介绍" type="success" showIcon=true}}
+
+\{{io-alert message="消息提示的文案" 
+description="消息提示的辅助性文字介绍消息提示
+的辅助性文字介绍消息提示的辅助性文字介绍" type="info" showIcon=true}}
+
+\{{io-alert message="警告提示的文案" description="警告提示的辅助性文字
+介绍警告提示的辅助性文字介绍" type="warn" showIcon=true}}
+
+\{{io-alert message="错误提示的文案" 
+description="错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字
+介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍错误提示的辅助性文字介绍" type="error" showIcon=true}}
+				</code></pre>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<div class="demo-type">
+	<h2>Alert 警告提示-关闭提示文字</h2>
+	<div class="demo">
+		<div class="demo-example">
+			{{io-alert message="消息提示的文案" type="info" closable=true closeText="不再提醒"}}
+		</div>
+		<div class="demo-code">
+			<div class="highlight">
+				<pre><code class="language-html" data-lang="html">
+\{{io-alert message="消息提示的文案" type="info" closable=true closeText="不再提醒"}}
+				</code></pre>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 
 
+<section class="markdown api-container io-table">
+	<h2 id="API"><span>API</span></h2>
+	<h3 id="Alert"><span>io-alert属性</span></h3>
+	<table>
+		<thead>
+		<tr>
+			<th>参数</th>
+			<th>说明</th>
+			<th>类型</th>
+			<th>默认值</th>
+		</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>message</td>
+				<td>提示文字</td>
+				<td>Boolean</td>
+				<td>false</td>
+			</tr>
+			<tr>
+				<td>type</td>
+				<td>提示类型 success 成功提示、 info 信息提示、 warn 警告提示、 error 错误提示</td>
+				<td>String</td>
+				<td>info</td>
+			</tr>
+			<tr>
+				<td>closable</td>
+				<td>关闭按钮</td>
+				<td>Boolean</td>
+				<td>false</td>
+			</tr>
+			<tr>
+				<td>showIcon</td>
+				<td>显示图标</td>
+				<td>Boolean</td>
+				<td>false</td>
+			</tr>
+			<tr>
+				<td>description</td>
+				<td>信息描述</td>
+				<td>String</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>closeText</td>
+				<td>关闭提示文字</td>
+				<td>String</td>
+				<td>-</td>
+			</tr>
+		</tbody>
+	</table>
+</section>

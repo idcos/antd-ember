@@ -1,0 +1,133 @@
+.table-toolbox {
+	/* right: 190px; */
+	padding: 12px 0 5px;
+}
+
+.service-list{
+	.panel{
+		padding: 0px !important;
+		border:0px;
+		border-top:1px solid #ddd;
+		border-radius:0px!important;
+		margin-bottom: 0px;
+	}
+	.globalSearch input {
+	    font-size: 13px;
+	    font-weight: 400;
+	    padding-top: 3px;
+	    padding-bottom: 3px;
+	    height: 30px;
+	    color: #333;
+	    border: 1px solid #999;
+	    border-radius: 2px;
+	}
+}
+
+.io-table {
+	@content-padding: 47px;
+	padding-top: 11px;
+	width:100%;
+	//white-space: nowrap;
+	.globalSearch{
+		/*margin-right: @content-padding;*/
+		margin-bottom: 10px;
+		// margin-right: 16px;
+		.io-input-sm {
+		    padding: 1px 0px!important;
+		}
+		input {
+			font-size: 13px;
+			font-weight: normal;
+			padding-top: 3px;
+			padding-bottom: 3px;
+			height: 30px;
+			color:#333;
+			border: 1px solid #999;
+			border-radius:2px;
+		}
+		//输入框，文本域 placeholder 修改默认颜色
+		input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+			color: #999;
+		}
+		input:-moz-placeholder, textarea:-moz-placeholder {
+			color: #999;
+		}
+		input::-moz-placeholder, textarea::-moz-placeholder {
+			color: #999;
+		}
+		input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+			color: #999;
+		}
+	}
+	table {
+	    border-collapse: collapse;
+	    border-radius: 0;
+	    border: 1px solid #4E5466;
+
+	}
+	thead th{
+		background: #636D88!important;
+		color:#fff;
+	}
+	tr th, tr td {
+		height: 37px;
+		/*word-wrap: break-word;
+		word-break: break-all;
+		-ms-word-break: break-all;
+		-ms-word-wrap: break-word;*/
+		&:first-child {
+			padding-left: @content-padding;
+		}
+		&:last-child {
+			padding-right: @content-padding;
+		}
+	}
+	tr td {
+	    border: 1px solid #B4BEC8;
+	}
+
+	&__btn {
+		font-size: 20px;
+		&-danger {
+			color: @brand-danger;
+		}
+	}
+	&-body {
+		/*margin-top: 6px;*/
+	}
+
+	>.row{
+		padding: 10px @content-padding;
+	}
+
+	/**
+	 * fixed header
+	 */
+	.io-table-header+.io-table-body {
+	    //overflow: auto;
+	    height: 312px;
+	}
+
+	.io-table-header , .io-table-body {
+		table {
+			td, th{
+				padding: 3px 8px;
+				font-size: 13px;
+				.idcicon {
+					font-size: 16px;
+					margin-right: 5px;
+				}
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			th {
+				font-size: 14px;
+				padding: 11px 8px;
+			}
+		}
+	}
+	.io-table-footer {
+		box-shadow: 0px -1px 1px #DEDEDE;
+	}
+}

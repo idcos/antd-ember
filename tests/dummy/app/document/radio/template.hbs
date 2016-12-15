@@ -22,13 +22,17 @@
 				<span>2</span>
 			</label>
 		</div>
+		<label>
+				{{io-radio value="3" name=name checked=checked}}
+				<span>3</span>
+			</label>
 		<div class="demo-code">
 			<div class="highlight">
 <pre><code class="language-html" data-lang="html">
 \{{io-radio value="1" name=name checked=checked}}
 \{{io-radio value="2" name=name checked=checked}}
 </code></pre>
-			</div>				
+			</div>
 		</div>
 	</div>
 </div>
@@ -43,7 +47,11 @@
 			</label>
 			&nbsp;&nbsp;
 			<label>
-				{{io-radio value="2" disabled=true checked='2'}}
+				{{io-radio value="2" disabled=true checked='1'}}
+			</label>
+			&nbsp;&nbsp;
+			<label>
+				{{io-radio value="3" disabled=true checked='3'}}
 			</label>
 		</div>
 		<div class="demo-code">
@@ -52,7 +60,7 @@
 \{{io-radio value="1" disabled=true checked='2'}}
 \{{io-radio value="2" disabled=true checked='2'}}
 </code></pre>
-			</div>				
+			</div>
 		</div>
 	</div>
 </div>
@@ -78,12 +86,53 @@
  	\{{#io-radio-button value="杭州" name=name checked=checked}} 杭州 \{{/io-radio-button}}
  	\{{#io-radio-button value="上海" name=name checked=checked}} 上海 \{{/io-radio-button}}
  	\{{#io-radio-button value="广州" name=name checked=checked}} 广州 \{{/io-radio-button}}
- 	\{{#io-radio-button value="深圳" name=name checked=checked}} 深圳 \{{/io-radio-button}}
+ 	\{{#io-radio-button value="深圳" name=name checked="深圳"}} 深圳 \{{/io-radio-button}}
 \{{/io-button-group}}
 </code></pre>
-			</div>				
+			</div>
 		</div>
 	</div>
 </div>
 
 
+<section class="markdown api-container io-table">
+<h2 id="API"><span>API</span></h2>
+<h3 id="Radio"><span>io-radio属性</span></h3>
+<table>
+	<thead>
+	<tr>
+		<th>参数</th>
+		<th>说明</th>
+		<th>类型</th>
+		<th>默认值</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>value</td>
+			<td>value 属性表示radio 值</td>
+			<td>String</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>checked</td>
+			<td>checked 属性为选中的 radio 值,</td>
+			<td>String</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>disabled</td>
+			<td>禁用</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+		<tr>
+			<td>name</td>
+			<td>name属性是为了形成单选按钮组统一名称</td>
+			<td>String</td>
+			<td>-</td>
+		</tr>
+	</tbody>
+</table>
+
+</section>

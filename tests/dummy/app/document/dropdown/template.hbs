@@ -19,61 +19,90 @@
 					{{/io-menu}}
 				{{/io-dropdown-overlay}}
 			{{/io-dropdown}}
-
-			&nbsp;&nbsp;&nbsp;
-
-			{{#io-dropdown triggerEvent="click"}}
-				{{#io-dropdown-trigger}}
-					点击菜单 {{io-icon type="down"}}
-				{{/io-dropdown-trigger}}
-				{{#io-dropdown-overlay}}
-					{{#io-menu}}
-						{{#io-menu-item value="1"}} 选项一 {{/io-menu-item}}
-						{{#io-menu-item}} 选项二 {{/io-menu-item}}
-						{{#io-menu-item-group title="分组1"}}
-							{{#io-menu-item}} 选项三 {{/io-menu-item}}
-							{{#io-menu-item}} 选项四 {{/io-menu-item}}
-						{{/io-menu-item-group}}
-					{{/io-menu}}
-				{{/io-dropdown-overlay}}
-			{{/io-dropdown}}
         </div>
         <div class="demo-code">
-        	<pre><code class="language-html" data-lang="html">  
-\{{#io-dropdown}}
-	\{{#io-dropdown-trigger}}
-		mouseover 菜单 \{{io-icon type="down"}}
-	\{{/io-dropdown-trigger}}
-	\{{#io-dropdown-overlay}}
-		\{{#io-menu}}
-			\{{#io-menu-item value="1"}} 选项一 \{{/io-menu-item}}
-			\{{#io-menu-item}} 选项二 \{{/io-menu-item}}
-			\{{!-- \{{#io-menu-item-group title="分组1"}} --}}
-			\{{#io-menu-item}} 选项三 \{{/io-menu-item}}
-			\{{#io-menu-item}} 选项四 \{{/io-menu-item}}
-			\{{!-- \{{/io-menu-item-group}} --}}
-		\{{/io-menu}}
-	\{{/io-dropdown-overlay}}
-\{{/io-dropdown}}
-
-&nbsp;&nbsp;&nbsp;
-
-\{{#io-dropdown triggerEvent="click"}}
-	\{{#io-dropdown-trigger}}
-		点击菜单 \{{io-icon type="down"}}
-	\{{/io-dropdown-trigger}}
-	\{{#io-dropdown-overlay}}
-		\{{#io-menu}}
-			\{{#io-menu-item value="1"}} 选项一 \{{/io-menu-item}}
-			\{{#io-menu-item}} 选项二 \{{/io-menu-item}}
-			\{{#io-menu-item-group title="分组1"}}
-			\{{#io-menu-item}} 选项三 \{{/io-menu-item}}
-			\{{#io-menu-item}} 选项四 \{{/io-menu-item}}
-			\{{/io-menu-item-group}}
-		\{{/io-menu}}
-	\{{/io-dropdown-overlay}}
-\{{/io-dropdown}}
+        	<pre><code class="language-html" data-lang="html">
+              \{{#io-dropdown}}
+                    \{{#io-dropdown-trigger}}
+                	   mouseover 菜单 \{{io-icon type="down"}}
+                    \{{/io-dropdown-trigger}}
+                    \{{#io-dropdown-overlay}}
+                	   \{{#io-menu}}
+        			     \{{#io-menu-item value="1"}} 选项一 \{{/io-menu-item}}
+            			 \{{#io-menu-item}} 选项二 \{{/io-menu-item}}
+        			     \{{!-- \{{#io-menu-item-group title="分组1"}} --}}
+        			     \{{#io-menu-item}} 选项三 \{{/io-menu-item}}
+        			     \{{#io-menu-item}} 选项四 \{{/io-menu-item}}
+        			     \{{!-- \{{/io-menu-item-group}} --}}
+        		    \{{/io-menu}}
+                  \{{/io-dropdown-overlay}}
+              \{{/io-dropdown}}
         	</code></pre>
+        </div>
+
+        <div class="demo-example">
+            {{#io-dropdown triggerEvent="click"}}
+                {{#io-dropdown-trigger}}
+                    点击菜单 {{io-icon type="down"}}
+                {{/io-dropdown-trigger}}
+                {{#io-dropdown-overlay}}
+                    {{#io-menu}}
+                        {{#io-menu-item value="1"}} 选项一 {{/io-menu-item}}
+                        {{#io-menu-item}} 选项二 {{/io-menu-item}}
+                        {{#io-menu-item-group title="分组1"}}
+                            {{#io-menu-item}} 选项三 {{/io-menu-item}}
+                            {{#io-menu-item}} 选项四 {{/io-menu-item}}
+                        {{/io-menu-item-group}}
+                    {{/io-menu}}
+                {{/io-dropdown-overlay}}
+            {{/io-dropdown}}
+        </div>
+        <div class="demo-code">
+            <pre><code class="language-html" data-lang="html">
+              \{{#io-dropdown triggerEvent="click"}}
+                \{{#io-dropdown-trigger}}
+                    点击菜单 \{{io-icon type="down"}}
+                \{{/io-dropdown-trigger}}
+                \{{#io-dropdown-overlay}}
+                    \{{#io-menu}}
+                        \{{#io-menu-item value="1"}} 选项一 \{{/io-menu-item}}
+                        \{{#io-menu-item}} 选项二 \{{/io-menu-item}}
+                        \{{#io-menu-item-group title="分组1"}}
+                        \{{#io-menu-item}} 选项三 \{{/io-menu-item}}
+                        \{{#io-menu-item}} 选项四 \{{/io-menu-item}}
+                        \{{/io-menu-item-group}}
+                    \{{/io-menu}}
+                \{{/io-dropdown-overlay}}
+              \{{/io-dropdown}}
+            </code></pre>
         </div>
     </div>
 </div>
+
+<section class="markdown api-container io-table">
+<h2 id="API"><span>API</span></h2>
+<h3 id="DropDown"><span>io-dropdown属性</span></h3>
+<table>
+	<thead>
+	<tr>
+		<th>参数</th>
+		<th>说明</th>
+		<th>类型</th>
+		<th>默认值</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>triggerEvent</td>
+			<td>触发事件： click(鼠标点击)，mouseover(鼠标悬浮)</td>
+			<td>String</td>
+			<td>mouseover</td>
+		</tr>
+	</tbody>
+</table>
+<blockquote>
+	<p>组件<code>io-dropdown</code> 包含两个组件 <code>io-dropdown-trigger</code>和<code>io-dropdown-overlay</code>，
+        组件<code>io-dropdown-trigger</code>用来包含当前显示菜单文字，组件<code>io-dropdown-overlay</code>用来显示触发内容。
+	</p>
+</blockquote>
+</section>

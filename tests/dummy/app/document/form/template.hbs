@@ -5,53 +5,76 @@
 <div class="demo-type">
     <h2> input 输入</h2>
     <div class="demo">
-
         <div class="demo-example">
             {{#io-row}}
                 {{#io-col span=6}}
-                    {{io-input 
-                        type="text" 
+                    {{io-input
+                        type="text"
                         size="large"
+                        width="200"
                         placeholder="请输入文字"}}
                     &nbsp;&nbsp;
-                {{/io-col}}
-                {{#io-col span=6}}
-                    {{io-input 
-                        type="text" 
-                        placeholder="请输入文字"}}
-                    &nbsp;&nbsp;
-                {{/io-col}}
-                {{#io-col span=6}}
-                    {{io-input 
-                        type="text" 
-                        size="small"
-                        placeholder="请输入文字"}}
                 {{/io-col}}
             {{/io-row}}
+            {{#io-row}}
+                {{#io-col span=6}}
+                    {{io-input
+                        type="text"
+                        size="small"
+                        width="200"
+                        placeholder="请输入文字"}}
+                    &nbsp;&nbsp;
+                {{/io-col}}
+            {{/io-row}}
+            {{#io-row}}
+                <div class="col-6" style="padding:1px 7px;">
+                    {{io-input
+                        type="text"
+                        size="default"
+                        width="200"
+                        placeholder="请输入文字"}}
+                    &nbsp;&nbsp;
+                </div>
+            {{/io-row}}
+            
         </div>
         <div class="demo-code">
-            <pre><code class="language-html" data-lang="html">   
+            <pre><code class="language-html" data-lang="html">
 \{{#io-row}}
     \{{#io-col span=6}}
-        \{{io-input 
-            type="text" 
+        \{{io-input
+            type="text"
             size="large"
+            width="200"
             placeholder="请输入文字"}}
         &nbsp;&nbsp;
-    \{{/io-col}}
-    \{{#io-col span=6}}
-        \{{io-input 
-            type="text" 
-            placeholder="请输入文字"}}
-        &nbsp;&nbsp;
-    \{{/io-col}}
-    \{{#io-col span=6}}
-        \{{io-input 
-            type="text" 
-            size="small"
-            placeholder="请输入文字"}}
     \{{/io-col}}
 \{{/io-row}}
+ <br/>
+\{{#io-row}}
+    \{{#io-col span=6}}
+        \{{io-input
+            type="text"
+            size="small"
+            width="200"
+            placeholder="请输入文字"}}
+        &nbsp;&nbsp;
+    \{{/io-col}}
+\{{/io-row}}
+<br/>
+
+\{{#io-row}}
+    <div class="col-6" style="padding:1px 7px;">
+        \{{io-input
+            type="text"
+            size="default"
+            width="200"
+            placeholder="请输入文字"}}
+        &nbsp;&nbsp;
+    </div>
+\{{/io-row}}
+
+               
             </code></pre>
         </div>
     </div>
@@ -66,32 +89,31 @@
     <div class="demo">
         <div class="demo-example">
             {{#io-form submitForm="saveAction"}}
-                {{#io-form-group
-                    label="Email Address"
-                    }}
-                    {{io-input 
+                {{#io-form-group label="邮箱" }}
+                    {{io-input
                     	value=model.email
-                    	type="email" 
-                    	id="assetsNo" 
+                    	type="email"
+                    	id="assetsNo"
                     	required=false
-                    	placeholder="Email"
-                    	}}
+                    	placeholder="输入邮箱"
+                    }}
                 {{/io-form-group}}
-                {{#io-form-group label="password"}}
-                    {{io-input 
+                {{#io-form-group label="密码"}}
+                    {{io-input
                     	value=model.password
-                    	type="password"  
+                    	type="password"
                     	required=true
-                    	placeholder="Password"
-                    	}}
+                    	placeholder="输入密码"
+                    }}
                 {{/io-form-group}}
                 {{#io-form-group}}
                     <div class="checkbox">
                         <label>
-                            {{io-checkbox 
+                            {{io-checkbox
     	                    	checked=model.checkMeOut
-    	                    	required=true }}
-                            记住我
+    	                    	required=true 
+                            }} 
+                            &nbsp;&nbsp;记住我
                         </label>
                     </div>
                 {{/io-form-group}}
@@ -100,36 +122,37 @@
         </div>
         <div class="demo-code">
         	<div class="highlight">
-        		<pre><code class="language-html" data-lang="html"> 
+        		<pre><code class="language-html" data-lang="html">
 \{{#io-form submitForm="saveAction"}}
     \{{#io-form-group
-        label="Email Address"
+        label="邮箱"
         }}
-        \{{io-input 
+        \{{io-input
             value=model.email
-            type="email" 
-            id="assetsNo" 
+            type="email"
+            id="assetsNo"
             required=true
-            placeholder="Email"
-            }}
+            placeholder="输入邮箱"
+        }}
     \{{/io-form-group}}
-    \{{#io-form-group label="password"}}
-        \{{io-input 
+    \{{#io-form-group label="密码"}}
+        \{{io-input
             value=model.password
-            type="password"  
+            type="password"
             required=true
-            placeholder="Password"
-            }}
+            placeholder="输入密码"
+        }}
     \{{/io-form-group}}
     \{{#io-form-group}}
-        \{{io-checkbox 
+        \{{io-checkbox
             checked=model.checkMeOut
-            required=true }}
+            required=true 
+        }}
         记住我
     \{{/io-form-group}}
     \{{#io-button submit=true}} submit \{{/io-button}}
 \{{/io-form}}
-</code></pre>
+                </code></pre>
         	</div>
         </div>
     </div>
@@ -141,14 +164,16 @@
     <p>同台类型的表单可以通过传入 <code>schema</code> 来生成表单，另设置 formData 对象对应表单项的值，可以通过 fieldChange action 来获取单个表单项的变化事件， submitForm 的参数为表单数据</p>
     <div class="demo">
         <div class="demo-example">
-            {{io-form schema=schema 
-                formData=formData 
+            {{io-form schema=schema
+                formData=formData
                 submitForm="submitDynamicForm"
-                fieldChange="fieldChange"}}
+                fieldChange="fieldChange"
+            }}
         </div>
         <div class="demo-code">
-            <pre><code class="language-html" data-lang="html">   
+            <pre><code class="language-html" data-lang="html">
 \{{io-form schema=schema formData=formData submitForm="submitDynamicForm" fieldChange="fieldChange"}}
+
 let schema = {
     title: "用户信息",
     description: "填写用户呢",
@@ -179,26 +204,26 @@ let schema = {
             error: "请输入名称",
             //  regrex pattern
             pattern: "^.*$"
-        }, 
+        },
         age: {
             type: "number",
             label: "年龄：",
             required: true
-        }, 
+        },
         sex: {
             type: "enum",
             label: "选择性别：",
             enum: [["boy", "男"], ["girl", "女"]],
-        }, 
+        },
         location: {
             type: "select",
             label: "选择所在省份：",
             options: [["a", "重庆"], ["b", "北京"], ["c", "广州"], ["d", "上海"]],
-        }, 
+        },
         description: {
             type: "textarea",
             label: "自我介绍："
-        }, 
+        },
         checked: {
             type: "check",
             label: "记住我：",
@@ -212,4 +237,103 @@ let schema = {
 </div>
 
 
-  
+<section class="markdown api-container io-table">
+<h2 id="API"><span>API</span></h2>
+<h3 id="Form"><span>io-form属性</span></h3>
+<table>
+	<thead>
+	<tr>
+		<th>参数</th>
+		<th>说明</th>
+		<th>类型</th>
+		<th>默认值</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>title</td>
+			<td>表单名称</td>
+			<td>String</td>
+			<td>-</td>
+		</tr>
+        <tr>
+            <td>formData</td>
+            <td>表单数据</td>
+            <td>Function</td>
+            <td>submitDynamicForm</td>
+        </tr>
+		<tr>
+			<td>fieldChange</td>
+			<td>表单数据变动触发方法</td>
+			<td>function</td>
+			<td>-</td>
+		</tr>
+        <tr>
+            <td>submitForm</td>
+            <td>提交表单数据触发方法</td>
+            <td>function</td>
+            <td>-</td>
+        </tr>
+	</tbody>
+</table>
+<style>
+.view-text-right{
+    text-align:right;
+    padding-right:35px;
+}
+text-right{
+    text-align:right;
+}
+</style>
+
+<h3 id="Form"><span>io-form属性--定义表单格式schema</span></h3>
+<table>
+    <thead>
+    <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>默认值</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>schema</td>
+            <td>表单格式</td>
+            <td>Object</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>description</td>
+            <td>表单描述信息</td>
+            <td>String</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>labelColClass</td>
+            <td>表单下组件描述列css类</td>
+            <td>String</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>inputColClass</td>
+            <td>表单下输入框列css类</td>
+            <td>String</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>submit</td>
+            <td>表单提交按钮对象 submit.text 按钮文字，submit.submitClass 按钮css类</td>
+            <td>String</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>properties</td>
+            <td>表单下组件子组件属性properties.property 子组件属性,properties.property.type子组件类型：text|number|password|select|enum|check|textarea七种，properties.property.name表单组件下子组件名称，properties.property.placeholder子组件提示文字，properties.property.labelColClass 子组件描述列css类，properties.property.inputColClass子组件输入框列css类，properties.property.required子组件验证是否必须，默认false，properties.property.pattern子组件正则过滤，error子组件错误提示，help子组件帮组信息提示</td>
+            <td>String</td>
+            <td>-</td>
+        </tr>
+    </tbody>
+</table>
+
+</section>

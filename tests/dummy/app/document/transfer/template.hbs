@@ -5,12 +5,10 @@
 	<div class="demo-doc">
 		<h2>基本用法</h2>
 	</div>
-	
+
 	<div class="demo">
 		<div class="demo-example">
-			{{io-transfer 
-				dataSource=dataSource 
-				targetValues=targetValues}}
+			{{io-transfer dataSource=dataSource targetValues=targetValues}}
 			<br>
 			<p>
 			选择结果：
@@ -22,27 +20,56 @@
 		<div class="demo-code">
 <div class="highlight">
 <pre><code class="language-html" data-lang="html">
-// dataSource 
+// dataSource
 let targetValues = [];
 let mockData = [];
 for (let i = 0; i &lt; 20; i++) {
-  const data = {
-    value: i,
-    label: `内容${i + 1}`,
-    description: `内容${i + 1}的描述`,
-    chosen: Math.random() * 2 > 1
-  };
-  if (data.chosen) {
-    targetValues.push(data.value);
-  }
-  mockData.push(data);
+	const data = {
+		value: i,
+		label: `内容${i + 1}`,
+		description: `内容${i + 1}的描述`,
+		chosen: Math.random() * 2 > 1
+	};
+	if (data.chosen) {
+		targetValues.push(data.value);
+	}
+	mockData.push(data);
 }
 
-\{{io-transfer 
-	dataSource=dataSource 
-	targetValues=targetValues}}
+\{{io-transfer dataSource=dataSource targetValues=targetValues}}
 </code></pre>
 </div>
 		</div>
 	</div>
 </seciton>
+
+
+<section class="markdown api-container io-table">
+<h2 id="API"><span>API</span></h2>
+<h3 id="Transfer"><span>io-transfer属性</span></h3>
+<table>
+	<thead>
+	<tr>
+		<th>参数</th>
+		<th>说明</th>
+		<th>类型</th>
+		<th>默认值</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>dataSource</td>
+			<td>数据资源</td>
+			<td>Object</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>targetValues</td>
+			<td>目标数据</td>
+			<td>Object</td>
+			<td>-</td>
+		</tr>
+	</tbody>
+</table>
+
+</section>

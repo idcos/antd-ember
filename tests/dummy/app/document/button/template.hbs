@@ -2,7 +2,6 @@
 
 按钮分为不同尺寸尺寸、不同类型, 带 icon 这几类
 <br>
-
 <section class="demo-type">
 	<div class="demo-doc">
 		<h2>基本按钮</h2>
@@ -25,19 +24,19 @@
  			{{#io-button type="ghost" }} 幽灵按钮 {{/io-button}}
  			{{#io-button type="dashed" }} 虚线按钮 {{/io-button}}
  			<br> <br>
- 			{{#io-button type="primary" submit=true}} submit 按钮{{/io-button}} 
- 			{{#io-button type="primary" onClick="handleClick" param1="clicked me"}} click 事件{{/io-button}} 						
+ 			{{#io-button type="primary" submit=true}} submit 按钮{{/io-button}}
+ 			{{#io-button type="primary" onClick="handleClick" param1="clicked me"}} click 事件{{/io-button}}
 		</div>
 		<div class="demo-code">
 			<div class="highlight">
-<pre><code class="language-html" data-lang="html">
-\{{#io-button type="primary" }} 主按钮 \{{/io-button}}
-\{{#io-button }} 次按钮 \{{/io-button}}
-\{{#io-button type="ghost" }} 幽灵按钮 \{{/io-button}}
-\{{#io-button type="dashed" }} 虚线按钮 \{{/io-button}} 
-\{{#io-button type="primary" submit=true}} submit 按钮 \{{/io-button}} 	
-\{{#io-button type="primary" onClick="handleClick" param1="clicked me"}} submit 按钮 \{{/io-button}} 
-</code></pre>
+				<pre><code class="language-html" data-lang="html">
+					\{{#io-button type="primary" }} 主按钮 \{{/io-button}}
+					\{{#io-button }} 次按钮 \{{/io-button}}
+					\{{#io-button type="ghost" }} 幽灵按钮 \{{/io-button}}
+					\{{#io-button type="dashed" }} 虚线按钮 \{{/io-button}}
+					\{{#io-button type="primary" submit=true}} submit 按钮 \{{/io-button}}
+					\{{#io-button type="primary" onClick="handleClick" param1="clicked me"}} submit 按钮 \{{/io-button}}
+				</code></pre>
 			</div>
 		</div>
 	</div>
@@ -46,9 +45,7 @@
 <div class="demo-type">
 	<h2>尺寸</h2>
 	<p>
-		按钮有大、中、小三种尺寸。
-
-通过设置 size 为 large small 分别把按钮设为大、小尺寸。若不设置 size，则尺寸为中。
+		按钮有大、中、小三种尺寸。通过设置 size 为 large small 分别把按钮设为大、小尺寸。若不设置 size，则尺寸为中。
 	</p>
 	<div class="demo">
 		<div class="demo-example">
@@ -58,14 +55,13 @@
 		</div>
 		<div class="demo-code">
 			<div class="highlight">
-<pre><code class="language-html" data-lang="html">
-\{{#io-button type="primary" size="large"}} 大号按钮 \{{/io-button}}
-\{{#io-button type="primary" }} 中号按钮（默认） \{{/io-button}}
-\{{#io-button type="primary" size="small"}} 小号按钮 \{{/io-button}}
-
-</code></pre>
+				<pre><code class="language-html" data-lang="html">
+					\{{#io-button type="primary" size="large"}} 大号按钮 \{{/io-button}}
+					\{{#io-button type="primary" }} 中号按钮（默认） \{{/io-button}}
+					\{{#io-button type="primary" size="small"}} 小号按钮 \{{/io-button}}
+				</code></pre>
 			</div>
-		</div>		
+		</div>
 	</div>
 </div>
 
@@ -82,13 +78,13 @@
 		</div>
 		<div class="demo-code">
 			<div class="highlight">
-<pre><code class="language-html" data-lang="html">
-\{{#io-button type="primary" size="large" loading="true"}} 加载中 \{{/io-button}}
-\{{#io-button type="primary"  loading="true"}} 加载中 \{{/io-button}}
-\{{#io-button type="primary" size="small" loading="true"}} 加载中 \{{/io-button}}
-</code></pre>
+				<pre><code class="language-html" data-lang="html">
+					\{{#io-button type="primary" size="large" loading="true"}} 加载中 \{{/io-button}}
+					\{{#io-button type="primary"  loading="true"}} 加载中 \{{/io-button}}
+					\{{#io-button type="primary" size="small" loading="true"}} 加载中 \{{/io-button}}
+				</code></pre>
 			</div>
-		</div>		
+		</div>
 	</div>
 </div>
 
@@ -108,16 +104,15 @@
 		</div>
 		<div class="demo-code">
 			<div class="highlight">
-<pre><code class="language-html" data-lang="html">
-\{{#io-button type="primary" shape="circle" size="large"}} <i class="fa fa-search"></i> \{{/io-button}}
-\{{#io-button type="primary" shape="circle"}} <i class="fa fa-search"></i> \{{/io-button}}
-\{{#io-button type="primary" shape="circle" size="small"}} <i class="fa fa-search"></i> \{{/io-button}}
-<br>
-\{{#io-button shape="circle" size="large"}} <i class="fa fa-search"></i> \{{/io-button}}
-\{{#io-button shape="circle"}} <i class="fa fa-search"></i> \{{/io-button}}
-\{{#io-button shape="circle" size="small"}} <i class="fa fa-search"></i> \{{/io-button}}
-
-</code></pre>
+				<pre><code class="language-html" data-lang="html">
+					\{{#io-button type="primary" shape="circle" size="large"}} <i class="fa fa-search"></i> \{{/io-button}}
+					\{{#io-button type="primary" shape="circle"}} <i class="fa fa-search"></i> \{{/io-button}}
+					\{{#io-button type="primary" shape="circle" size="small"}} <i class="fa fa-search"></i> \{{/io-button}}
+					<br>
+					\{{#io-button shape="circle" size="large"}} <i class="fa fa-search"></i> \{{/io-button}}
+					\{{#io-button shape="circle"}} <i class="fa fa-search"></i> \{{/io-button}}
+					\{{#io-button shape="circle" size="small"}} <i class="fa fa-search"></i> \{{/io-button}}
+				</code></pre>
 			</div>
 		</div>
 	</div>
@@ -137,86 +132,104 @@
  			{{#io-button type="ghost" }} 幽灵按钮 {{/io-button}}
  			{{#io-button type="ghost" disabled="true"}} 幽灵按钮失效 {{/io-button}}
  			<br>
- 			{{#io-button type="dashed" }} 虚线按钮 {{/io-button}} 
- 			{{#io-button type="dashed" disabled="true"}} 虚线按钮失效 {{/io-button}} 
+ 			{{#io-button type="dashed" }} 虚线按钮 {{/io-button}}
+ 			{{#io-button type="dashed" disabled="true"}} 虚线按钮失效 {{/io-button}}
 
 		</div>
 		<div class="demo-code">
 			<div class="highlight">
-<pre><code class="language-html" data-lang="html">
-\{{#io-button type="primary" }} 主按钮失效 \{{/io-button}}
-\{{#io-button type="primary" disabled="true"}} 主按钮 \{{/io-button}}
-<br>
-\{{#io-button }} 次按钮 \{{/io-button}}
-\{{#io-button disabled="true"}} 次按钮失效 \{{/io-button}}
-<br>
-\{{#io-button type="ghost" }} 幽灵按钮 \{{/io-button}}
-\{{#io-button type="ghost" disabled="true"}} 幽灵按钮失效 \{{/io-button}}
-<br>
-\{{#io-button type="dashed" }} 虚线按钮 \{{/io-button}} 
-\{{#io-button type="dashed" disabled="true"}} 虚线按钮失效 \{{/io-button}} 
-
-</code></pre>
-			</div>
-		</div> 
-	</div>
-</div>
-
-<div class="demo-type">
-	<h2>按钮组合</h2>
-	<p>可以将多个 Button 放入 ButtonGroup 的容器中。
-
-通过设置 size 为 large small 分别把按钮组合设为大、小尺寸。若不设置 size，则尺寸为中。</p>
-	<div class="demo">
-		<div class="demo-example">
-			<p>基本组合</p>
-			{{#io-button-group}}
-				{{#io-button type="primary"}}确定{{/io-button}}
-				{{#io-button type="primary"}} 取消 {{/io-button}}
-			{{/io-button-group}}
-			&nbsp;&nbsp;
-			{{#io-button-group}}
-				{{#io-button disabled="true"}}左{{/io-button}}
-				{{#io-button disabled="true"}}中{{/io-button}}
-				{{#io-button disabled="true"}}右{{/io-button}}
-			{{/io-button-group}}
-			<br><br>
-			<p>带图标按钮组合</p>
-			{{#io-button-group}}
-				{{#io-button type="ghost"}}1{{/io-button}}
-				{{#io-button type="ghost"}}2{{/io-button}}
-				{{#io-button type="ghost"}}3{{/io-button}}
-				{{#io-button type="ghost"}}4{{/io-button}}
-				{{#io-button type="ghost"}}前进 {{io-icon type="right"}}{{/io-button}}
-			{{/io-button-group}}
-
-		</div>
-		<div class="demo-code">
-			<div class="highlight">
-<pre><code class="language-html" data-lang="html">
-\{{#io-button-group}}
-	\{{#io-button type="primary"}}确定\{{/io-button}}
-	\{{#io-button type="primary"}} 取消 \{{/io-button}}
-\{{/io-button-group}}
-
-\{{#io-button-group}}
-	\{{#io-button disabled="true"}}左\{{/io-button}}
-	\{{#io-button disabled="true"}}中\{{/io-button}}
-	\{{#io-button disabled="true"}}右\{{/io-button}}
-\{{/io-button-group}}
-
-\{{#io-button-group}}
-	\{{#io-button type="ghost"}}1\{{/io-button}}
-	\{{#io-button type="ghost"}}2\{{/io-button}}
-	\{{#io-button type="ghost"}}3\{{/io-button}}
-	\{{#io-button type="ghost"}}4\{{/io-button}}
-	\{{#io-button type="ghost"}}前进 \{{io-icon type="right"}}\{{/io-button}}
-\{{/io-button-group}}
-
-</code></pre>
+				<pre><code class="language-html" data-lang="html">
+					\{{#io-button type="primary" }} 主按钮失效 \{{/io-button}}
+					\{{#io-button type="primary" disabled="true"}} 主按钮 \{{/io-button}}
+					<br>
+					\{{#io-button }} 次按钮 \{{/io-button}}
+					\{{#io-button disabled="true"}} 次按钮失效 \{{/io-button}}
+					<br>
+					\{{#io-button type="ghost" }} 幽灵按钮 \{{/io-button}}
+					\{{#io-button type="ghost" disabled="true"}} 幽灵按钮失效 \{{/io-button}}
+					<br>
+					\{{#io-button type="dashed" }} 虚线按钮 \{{/io-button}}
+					\{{#io-button type="dashed" disabled="true"}} 虚线按钮失效 \{{/io-button}}
+				</code></pre>
 			</div>
 		</div>
 	</div>
 </div>
 
+                                          
 
+<section class="markdown api-container io-table">
+<h2 id="API"><span>API</span></h2>
+<h3 id="Button"><span>io-button属性</span></h3>
+<table>
+	<thead>
+	<tr>
+		<th>参数</th>
+		<th>说明</th>
+		<th>类型</th>
+		<th>默认值</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>type</td>
+			<td>设置按钮类型，可选值为 primary ghost dashed 或者不设，最终生成 class=“io-btn-”+type的值。</td>
+			<td>string</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>icon</td>
+			<td>设置按钮的图标类型</td>
+			<td>string</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>disabled</td>
+			<td>禁用</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+		<tr>
+			<td>size</td>
+			<td>设置按钮大小，可选值为 small large 或者不设</td>
+			<td>String</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>shape</td>
+			<td>设置按钮形状，可选值为 circle 或者不设</td>
+			<td>String</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>loading</td>
+			<td>设置按钮载入状态，一般更新数据时配合使用</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+		<tr>
+			<td>submit</td>
+			<td>submit 表单提交</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+		<tr>
+			<td>onClick</td>
+			<td>click 事件的 handler</td>
+			<td>function</td>
+			<td>-</td>
+		</tr>
+	</tbody>
+</table>
+<blockquote>
+	<p>如果 <code>Input</code> 在 <code>Form.Item</code> 内，并且 <code>Form.Item</code> 设置了 <code>id</code> 和 <code>options</code> 属性，则 <code>value</code><code> defaultValue</code>  和 <code>id</code> 属性会被自动设置。
+	</p>
+</blockquote>
+
+<pre class="language-html">
+	<code>&lt;Input.Group&gt;
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Input</span><span class="token punctuation">/&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Input</span><span class="token punctuation">/&gt;</span></span>&lt;/Input.Group&gt;
+	</code>
+</pre>
+</section>

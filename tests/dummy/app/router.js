@@ -34,6 +34,7 @@ Router.map(function() {
     this.route('unsave');
     this.route('transfer');
     this.route('progress');
+    this.route('tooltips');
   });
 });
 

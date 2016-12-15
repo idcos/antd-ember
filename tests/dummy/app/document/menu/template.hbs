@@ -9,10 +9,10 @@
 		<div class="demo-example">
 				{{#io-menu}}
 					{{#io-menu-item selected=true}} {{io-icon type="mail"}} 导航一 {{/io-menu-item}}
-					{{#io-menu-item }} {{io-icon type="appstore"}} 导航二 {{/io-menu-item}}	
-					{{#io-menu-item submenu=true}} 
-						{{#io-menu-title}} 
-							{{io-icon type="setting"}} 导航三 子菜单 
+					{{#io-menu-item selected=true}} {{io-icon type="appstore"}} 导航二 {{/io-menu-item}}
+					{{#io-menu-item submenu=true}}
+						{{#io-menu-title}}
+							{{io-icon type="setting"}} 导航三 子菜单
 						{{/io-menu-title}}
 						{{#io-menu sub=true}}
 							{{#io-menu-item value="1" selectedValue="1"}} 选项一 {{/io-menu-item}}
@@ -31,10 +31,10 @@
 <pre><code class="language-html" data-lang="html">
 \{{#io-menu}}
 	\{{#io-menu-item selected=true}} \{{io-icon type="mail"}} 导航一 \{{/io-menu-item}}
-	\{{#io-menu-item }} \{{io-icon type="appstore"}} 导航二 \{{/io-menu-item}}	
-	\{{#io-menu-item submenu=true}} 
-		\{{#io-menu-title}} 
-			\{{io-icon type="setting"}} 导航三 子菜单 
+	\{{#io-menu-item }} \{{io-icon type="appstore"}} 导航二 \{{/io-menu-item}}
+	\{{#io-menu-item submenu=true}}
+		\{{#io-menu-title}}
+			\{{io-icon type="setting"}} 导航三 子菜单
 		\{{/io-menu-title}}
 		\{{#io-menu sub=true}}
 			\{{#io-menu-item value="1" selectedValue="1"}} 选项一 \{{/io-menu-item}}
@@ -49,7 +49,7 @@
 \{{/io-menu}}
 
 </code></pre>
-			</div>			
+			</div>
 		</div>
 	</div>
 </section>
@@ -62,8 +62,8 @@
 		<div class="demo-example">
 			{{#io-menu mode="inline" style="width: 240px;"}}
 				{{#io-menu-item }} {{io-icon type="mail"}} 导航一 {{/io-menu-item}}
-				{{#io-menu-item }} {{io-icon type="appstore"}} 导航二 {{/io-menu-item}}	
-				{{#io-menu-item submenu=true}} 
+				{{#io-menu-item }} {{io-icon type="appstore"}} 导航二 {{/io-menu-item}}
+				{{#io-menu-item submenu=true}}
 					{{#io-menu-title}} {{io-icon type="setting"}} 导航三 子菜单 {{/io-menu-title}}
 					{{#io-menu mode="inline" sub=true}}
 						{{#io-menu-item value="1" selectedValue="1"}} 选项一 {{/io-menu-item}}
@@ -81,8 +81,8 @@
 <pre><code class="language-html" data-lang="html">
 \{{#io-menu mode="inline" style="width: 240px;"}}
 	\{{#io-menu-item }} \{{io-icon type="mail"}} 导航一 \{{/io-menu-item}}
-	\{{#io-menu-item }} \{{io-icon type="appstore"}} 导航二 \{{/io-menu-item}}	
-	\{{#io-menu-item submenu=true}} 
+	\{{#io-menu-item }} \{{io-icon type="appstore"}} 导航二 \{{/io-menu-item}}
+	\{{#io-menu-item submenu=true}}
 		\{{#io-menu-title}} \{{io-icon type="setting"}} 导航三 子菜单 \{{/io-menu-title}}
 		\{{#io-menu mode="inline" sub=true}}
 			\{{#io-menu-item value="1" selectedValue="1"}} 选项一 \{{/io-menu-item}}
@@ -95,12 +95,50 @@
 	\{{/io-menu-item}}
 \{{/io-menu}}
 </code></pre>
-			</div>			
+			</div>
 		</div>
 	</div>
 </section>
 
 
+<section class="markdown api-container io-table">
+<h2 id="API"><span>API</span></h2>
+<h3 id="Menu"><span>io-menu属性</span></h3>
+<table>
+	<thead>
+	<tr>
+		<th>参数</th>
+		<th>说明</th>
+		<th>类型</th>
+		<th>默认值</th>
+	</tr>
+	</thead>
+	<tbody>
+        <tr>
+			<td>mode</td>
+			<td>导航栏方向 默认为横向导航，mode="inline"时，为侧栏导航</td>
+			<td>String</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>selected</td>
+			<td>一级导航选中状态（可设置多个导航按钮为选中状态）</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+		<tr>
+			<td>selectedValue</td>
+			<td>二级导航选中状态的值，如果value的值与selectedValue的值相同，则此导航按钮被选中</td>
+			<td>String</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>submenu</td>
+			<td>子导航</td>
+			<td>Boolean</td>
+			<td>false</td>
+		</tr>
+	</tbody>
+</table>
 
-
- 
+</section>
