@@ -5,29 +5,42 @@
 	<div class="demo">
 		<div class="demo-example">
 	        {{#io-tooltips type="top" tip="编辑"}}
-	        	<a type="button" class="io-table__btn" >
-	        		测试io-tooltips
-	        	</a>
+	        	测试io-tooltips
 	        {{/io-tooltips}}
 		</div>
 		<div class="demo-code">
 			<div class="highlight">
                 <pre><code class="language-html">
 \{{#io-tooltips tip="编辑"}}
-<a type="button" class="io-table__btn" >
 	测试io-tooltips
-</a>
 \{{/io-tooltips}}
                 </code></pre>
 			</div>
 		</div>
 	</div>
 </div>
-
-
+<div class="demo-type">
+	<h2>文字提示</h2>
+	<div class="demo">
+		<div class="demo-example">
+			{{#tool-tipster title="编辑" tagName='span' animation='grow'}}
+				测试io-tooltips
+			{{/tool-tipster}}
+		</div>
+		<div class="demo-code">
+			<div class="highlight">
+                <pre><code class="language-html">
+\{{#tool-tipster title="编辑" tagName='span' animation='grow'}}
+    测试io-tooltips
+\{{/tool-tipster}}
+                </code></pre>
+			</div>
+		</div>
+	</div>
+</div>
 <section class="markdown api-container io-table">
 <h2 id="API"><span>API</span></h2>
-<h3 id="Button"><span>io-datepicker属性</span></h3>
+<h3 id="Io-tooltips"><span>io-tooltips属性</span></h3>
 <table>
 	<thead>
 	<tr>
@@ -46,4 +59,36 @@
 		</tr>
 	</tbody>
 </table>
+<h3 id="Tool-tipster"><span>tool-tipster属性</span></h3>
+<table>
+	<thead>
+	<tr>
+		<th>参数</th>
+		<th>说明</th>
+		<th>类型</th>
+		<th>默认值</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>title</td>
+			<td>提示文字</td>
+			<td>String</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>tagName</td>
+			<td>标签 默认span</td>
+			<td>String</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>animation</td>
+			<td>动画效果</td>
+			<td>String</td>
+			<td>-</td>
+		</tr>
+	</tbody>
+</table>
+
 </section>
