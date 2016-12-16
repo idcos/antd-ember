@@ -1,10 +1,10 @@
 import Ember from 'ember';
-
+const swal = window.swal;
 export
 default Ember.Controller.extend({
     checked: true,
     _checkedOnChange: Ember.observer('checked', function() {
-        alert(this.get('checked') ? 'checked' : 'uncheck');
+        swal(this.get('checked') ? 'checked' : 'uncheck');
     }),
     actions: {
         onChange: function(checked) {

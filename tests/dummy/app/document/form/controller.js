@@ -1,5 +1,6 @@
 import Ember from 'ember';
-const { get, set } = Ember;
+
+//const { get, set } = Ember;
 
 let schema = {
     title: "用户信息",
@@ -31,34 +32,34 @@ let schema = {
             error: "请输入名称",
             //  regrex pattern
             pattern: "^.*$"
-        }, 
+        },
         age: {
             type: "number",
             label: "年龄：",
             labelColClass: "col-8 view-text-right",
             inputColClass: "col-5",
             required: true
-        }, 
+        },
         sex: {
             type: "enum",
             label: "选择性别：",
             labelColClass: "col-8 view-text-right",
             inputColClass: "col-5",
             enum: [["boy", "男"], ["girl", "女"]],
-        }, 
+        },
         location: {
             type: "select",
             label: "选择所在省份：",
             labelColClass: "col-8 view-text-right",
             inputColClass: "col-5",
             options: [["a", "重庆"], ["b", "北京"], ["c", "广州"], ["d", "上海"]],
-        }, 
+        },
         description: {
             type: "textarea",
             label: "自我介绍：",
             labelColClass: "col-8 view-text-right",
             inputColClass: "col-5",
-        }, 
+        },
         checked: {
             type: "check",
             label: "记住我：",
@@ -68,7 +69,7 @@ let schema = {
             checkLabel: "请勾选"
         }
     }
-}
+};
 export default Ember.Controller.extend({
     isShowingModal: false,
     model: {
@@ -84,13 +85,14 @@ export default Ember.Controller.extend({
     },
     actions: {
         saveAction: function() {
-            console.log(this.get('model'));
+            var model=this.get('model');
+            console.log(model);
         },
         submitDynamicForm: function(data) {
             console.log('submit dynamic form', data);
         },
         fieldChange: function(field) {
-            console.log('field change', field.name, field.value)
+            console.log('field change', field.name, field.value);
         }
     }
 });

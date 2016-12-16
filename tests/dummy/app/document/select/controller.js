@@ -1,5 +1,5 @@
 import Ember from 'ember';
-
+const swal = window.swal;
 const treeData = [{
   title: '节点一',
   id: '0-0',
@@ -47,7 +47,7 @@ export default Ember.Controller.extend({
 		label: '6174'
 	}],
 	_valueChange: Ember.observer('value', function() {
-		alert('value change' + this.get('value'));
+		swal('value change' + this.get('value'));
 	}),
 	comboboxValue: '',
 	comboboxOptions: [],
@@ -76,7 +76,8 @@ export default Ember.Controller.extend({
 			}, 1000);
 		},
 
-		onSearch: function(value) {
+		onSearch: function() {
+            this.get("value");
 			setTimeout(() => {
 				this.set('options', [{
 					value: 'jack',

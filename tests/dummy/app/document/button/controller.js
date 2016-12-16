@@ -1,10 +1,5 @@
 import Ember from 'ember';
-
-const {
-    // get,
-    // set
-} = Ember;
-
+const swal = window.swal;
 export
 default Ember.Controller.extend({
     isShowingModal: false,
@@ -13,7 +8,7 @@ default Ember.Controller.extend({
     },
     actions: {
         handleClick(btn) {
-            alert(btn.get('param1'));
+            swal(btn.get('param1'));
         }
     }
 });

@@ -1,10 +1,4 @@
 import Ember from 'ember';
-
-const {
-    // get,
-    // set
-} = Ember;
-
 export
 default Ember.Controller.extend({
     list:[{
@@ -29,7 +23,8 @@ default Ember.Controller.extend({
         update: function(selection) {
             console.log(selection);
         },
-        search: function(searchText) {
+        //search: function(searchText) {
+        search: function() {
             this.set('isLoading', true);
             this.set('list', []);
             setTimeout(function(){
@@ -45,8 +40,8 @@ default Ember.Controller.extend({
                     title: 'TEDxixi',
                     label: 'TED12323423',
                     value: 3
-                }])  
-                this.set('isLoading', false); 
+                }]);  
+                this.set('isLoading', false);
             }.bind(this), 500);
         }
     }

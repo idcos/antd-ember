@@ -1,8 +1,5 @@
 import Ember from 'ember';
-const {
-    // get,
-    // set
-} = Ember;
+//const {} = Ember;
 export
 default Ember.Controller.extend({
     columns: [{
@@ -190,7 +187,8 @@ default Ember.Controller.extend({
         update: function(selection) {
             console.log(selection);
         },
-        search: function(searchText) {
+        search: function() {
+           // var searchText=this.get("value");
             this.set('isLoading', true);
             this.set('list', []);
             setTimeout(function() {

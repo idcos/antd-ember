@@ -1,12 +1,6 @@
 import Ember from 'ember';
-
-const {
-    // get,
-    // set
-} = Ember;
-
-export
-default Ember.Controller.extend({
+//const {} = Ember;
+export default Ember.Controller.extend({
     isShowingModal: false,
     actions: {
         toggleModal: function() {
