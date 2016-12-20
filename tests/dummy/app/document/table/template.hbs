@@ -6,11 +6,17 @@
 	<h2>基本使用</h2>
 	<div class="demo">
 		<div class="demo-example">
+			<div class="pull-right" style="margin: 14px;">
+				{{#io-switch checked=useFiltering}}
+					<span class="checked">开</span>
+					<span class="unchecked">关</span>
+				{{/io-switch}} 列搜索
+			</div>
 			{{io-table
 				columns=columns
         showIndexNumber=true
         indexNumberBase=20
-        showColumnsDropdown=true
+        showColumnsDropdown=true useFilteringByColumns=useFiltering
 				data=data}}
 		</div>
 		<div class="demo-code">
@@ -53,7 +59,7 @@
 </div>
 <section class="markdown api-container io-table">
 <h2 id="API"><span>API</span></h2>
-<h3 id="Button"><span>io-checkbox属性</span></h3>
+<h3 id="Io-table"><span>io-table属性</span></h3>
 <table>
   <thead>
   <tr>

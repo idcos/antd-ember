@@ -24,7 +24,7 @@
       {{#if showIndexNumber}}
         <th></th>
       {{/if}}
-      {{#each processedColumns as |column|}}
+      {{#each processedColumns as |column index|}}
         {{#if column.isVisible}}
           <th class="{{classes.theadCell}}">
             {{#if column.useFilter}}
@@ -37,7 +37,7 @@
                   {{/each}}
                 </select>
               {{else}}
-                {{input type="text" value=column.filterString class="form-control"}}
+                {{input type="text" value=column.filterString class="form-control" placeholder="输入关键字回车搜索" autocomplete="off" enter=(action 'enterAction' column.filterString) key-up=(action 'keyUpAction' column.filterString)}}
               {{/if}}
             {{else}}
               &nbsp;

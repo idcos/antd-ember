@@ -182,6 +182,7 @@ default Ember.Controller.extend({
         "city": "Dhaka",
         "cityWithHtml": "<i>Dhaka</i>"
     }],
+    useFiltering:true,
     isLoading: false,
     actions: {
         update: function(selection) {

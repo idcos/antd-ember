@@ -449,7 +449,7 @@ export default Component.extend({
      * @type {Ember.Object[]}
      * @name ModelsTable#filteredContent
      */
-    filteredContent: computed('data.[]', 'useFilteringByColumns', 'processedColumns.@each.filterString', function() {
+    filteredContent: computed('data.[]', 'useFilteringByColumns', function() {
         const {
             processedColumns,
             data,
@@ -472,7 +472,7 @@ export default Component.extend({
                 const propertyName = get(c, 'propertyName');
                 if (propertyName) {
                     var cellValue = '' + get(it, propertyName);
-                    set(it, propertyName + '__pinyin', pinyinTranslator.getFullChars(cellValue));              
+                    set(it, propertyName + '__pinyin', pinyinTranslator.getFullChars(cellValue));
                 }
             });
         });
@@ -482,17 +482,24 @@ export default Component.extend({
             return processedColumns.length ? processedColumns.any(c => {
                 const propertyName = get(c, 'propertyName');
                 if (propertyName) {
-                    var cellValue = '' + get(row, propertyName + '__pinyin');
+                    var cellValue = '' + get(row, propertyName);
+                    if(filterString.match(new RegExp("^[A-Za-z]+$"))){
+                        cellValue = '' + get(row, propertyName + '__pinyin');
+                    }
                     if (filteringIgnoreCase) {
                         cellValue = cellValue.toLowerCase();
                         filterString = filterString.toLowerCase();
                     }
-                    return defaultFilter(cellValue, filterString);
+                    if(filterString.match(new RegExp("^[A-Za-z]+$"))){
+                        return defaultFilter(cellValue, filterString);
+                    }else{
+                        return -1 !== cellValue.indexOf(filterString);
+                    }
                 }
                 return false;
             }) : true;
         });
-        
+
         if (!useFilteringByColumns) {
             return A(globalSearch);
         }
@@ -517,7 +524,11 @@ export default Component.extend({
                                 filterString = filterString.toLowerCase();
                             }
 
-                            return c.filterFunction(cellValuePinyin, filterString);
+                            if(filterString.match(new RegExp("^[A-Za-z]+$"))){
+                                return defaultFilter(cellValuePinyin, filterString);
+                            }else{
+                                return -1 !== cellValue.indexOf(filterString);
+                            }
                         }
                     }
                     return true;
@@ -649,7 +660,7 @@ export default Component.extend({
 
 
         this.set("loading",false);
-        
+
         if (!visibleContentLength && dataLength && currentPageNumber !== 1) {
             set(this, 'currentPageNumber', 1);
         }
@@ -958,6 +969,13 @@ export default Component.extend({
                 this.send("searchAction",this.get("filterString"));
             }
         },
+        keyUpAction:function(filterString){
+            var filterString=this.get("filterString");
+            if(filterString==""||filterString==undefined){
+                this.set("loading",true);
+                this.send("searchAction",this.get("filterString"));
+            }
+        },
         searchAction: function(filterString){
             const {
                 processedColumns,
@@ -965,7 +983,7 @@ export default Component.extend({
                 useFilteringByColumns,
                 filteringIgnoreCase
             } = getProperties(this, 'processedColumns', 'data', 'useFilteringByColumns', 'filteringIgnoreCase');
-            var filterString = get(this, 'filterString');
+            //var filterString = get(this, 'filterString');
             if (!data) {
                 return A([]);
             }
@@ -982,7 +1000,7 @@ export default Component.extend({
                         const propertyName = get(c, 'propertyName');
                         if (propertyName) {
                             var cellValue = '' + get(it, propertyName);
-                            set(it, propertyName + '__pinyin', pinyinTranslator.getFullChars(cellValue));              
+                            set(it, propertyName + '__pinyin', pinyinTranslator.getFullChars(cellValue));
                         }
                     });
                 });
@@ -991,7 +1009,7 @@ export default Component.extend({
                     set(it, '__index', index + indexNumberBase);
                 });
             }
-            
+
 
             // global search
             var globalSearch = data.filter(function(row) {
@@ -1011,12 +1029,12 @@ export default Component.extend({
                         }else{
                             return -1 !== cellValue.indexOf(filterString);
                         }
-                        
+
                     }
                     return false;
                 }) : true;
             });
-           
+
             var filterData=A([]);
             if (!useFilteringByColumns) {
                 filterData=A(globalSearch);
@@ -1030,6 +1048,7 @@ export default Component.extend({
                             var cellValue = '' + get(row, propertyName);
                             if (get(c, 'useFilter')) {
                                 var filterString = get(c, 'filterString');
+                                console.log(filterString);
                                 if (get(c, 'filterWithSelect')) {
                                     if ('' === filterString) {
                                         return true;
@@ -1041,10 +1060,15 @@ export default Component.extend({
                                         cellValuePinyin = cellValuePinyin.toLowerCase();
                                         filterString = filterString.toLowerCase();
                                     }
+                                    // if(filterString.match(new RegExp("^[A-Za-z]+$"))){
+                                    //     return c.filterFunction(cellValuePinyin, filterString);
+                                    // }else{
+                                    //     return c.filterFunction(cellValue, filterString);
+                                    // }
                                     if(filterString.match(new RegExp("^[A-Za-z]+$"))){
-                                        return c.filterFunction(cellValuePinyin, filterString);
+                                        return defaultFilter(cellValuePinyin, filterString);
                                     }else{
-                                        return c.filterFunction(cellValue, filterString);
+                                        return -1 !== cellValue.indexOf(filterString);
                                     }
                                 }
                             }
