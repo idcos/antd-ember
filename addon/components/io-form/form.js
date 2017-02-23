@@ -26,6 +26,7 @@ export default Ember.Component.extend(DisabledClass, {
    * @attribute  schema
    */
   schema: null,
+  subsave:true,
   schemaFields: function() {
     let schema = this.get('schema');
     if (!schema) {
@@ -100,12 +101,17 @@ export default Ember.Component.extend(DisabledClass, {
    * @return {[type]}   [description]
    */
   submit(e) {
-    if (e && e.isDefaultPrevented && !e.isDefaultPrevented()) {
-   	  e.preventDefault();
-      try {
-        this.sendAction('submitForm', this.get('formData'));
-      } catch (err) {
-        console.log('warning: ', err);
+    if(this.get("subsave")){
+      if (e && e.isDefaultPrevented && !e.isDefaultPrevented()) {
+     	  e.preventDefault();
+        try {
+          let self=this;
+          this.set("subsave",false);
+          self.sendAction('submitForm', self.get('formData'));
+          setTimeout(function(){self.set("subsave",true);},2000);
+        } catch (err) {
+          console.log('warning: ', err);
+        }
       }
     }
   },
