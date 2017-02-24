@@ -43,7 +43,10 @@ export default Ember.Component.extend(ComponentParent, FormItemMixin, {
 			this.set('value', value);
 
 			setTimeout(() => {
-				this.$().trigger('input.bs.validator');
+				const $el = this.$();
+				if ($el && $el.trigger) {
+					$el.trigger('input.bs.validator');
+				}
 			}, 100);
 		});
 	}.observes('checked').on('init')
