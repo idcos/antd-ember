@@ -445,6 +445,19 @@ export default Component.extend({
             this.set("keypressCode",null);
         }
     }),
+    filterByColumnsObserver: observer('useFilteringByColumns', function() {
+        // if (get(this, 'keypressCode')==13) {
+            
+        // }
+        if(this.get('useFilteringByColumns')===false){
+            let processedColumns=this.get("processedColumns");
+            if(processedColumns!==undefined){
+                processedColumns.forEach(c => {
+                    set(c,'filterString','');
+                });
+            }
+        }
+    }),
     /**
      * @type {Ember.Object[]}
      * @name ModelsTable#filteredContent
