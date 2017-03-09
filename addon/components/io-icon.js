@@ -19,6 +19,7 @@ export default Ember.Component.extend({
 	 * @type {Boolean}
 	 */
 	fa: false,
+	doubleClick:false,
 	classNameBindings: ['typeClass'],
 	typeClass: function() {
 		if (this.get('fa')) {
@@ -27,6 +28,12 @@ export default Ember.Component.extend({
 		return  'ioicon ioicon-' + this.get('type');
 	}.property('type'),
 	click: function() {
-		this.sendAction('onClick');
+		let dc=this.get("doubleClick");
+		if(!dc){
+			this.set("doubleClick",true);
+			this.sendAction('onClick');
+			let self=this;
+			setTimeout(function(){self.set("doubleClick",false);},2000);
+		}
 	}
 });

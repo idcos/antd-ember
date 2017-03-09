@@ -27,6 +27,7 @@ export default Ember.Component.extend({
 	shape: 'default',
 	role: 'button',
 	loading: false,
+	doubleClick:false,
 	/**
 	 * [classNameBindings description]
 	 * @type {Array}
@@ -80,10 +81,16 @@ export default Ember.Component.extend({
 	 * @return {[type]} [description]
 	 */
 	click: function() {
-		if (this.get('onClick')) {
-			this.sendAction('onClick', this);
-		} else {
-			this.sendAction(this);
+		let dc=this.get("doubleClick");
+		if(!dc){
+			this.set("doubleClick",true);
+			if (this.get('onClick')) {
+				this.sendAction('onClick', this);
+			} else {
+				this.sendAction(this);
+			}
+			let self=this;
+			setTimeout(function(){self.set("doubleClick",false);},1800);
 		}
 	}
 });
