@@ -182,7 +182,7 @@
 
   window.sweetAlertInitialize = function() {
     var sweetHTML = "<div class=\"sweet-overlay\" tabIndex=\"-1\"></div>"
-                    + "<div class=\"sweet-alert\" tabIndex=\"-1\">"
+                    + "<div class=\"sweet-alert\" >"
                     + "    <div class=\"icon error\"><span class=\"x-mark\"><span class=\"line left\"></span><span class=\"line right\"></span></span></div>"
                     + "    <div class=\"icon warning\"> <span class=\"body\"></span> <span class=\"dot\"></span> </div>"
                     + "    <div class=\"icon info\"></div>"
