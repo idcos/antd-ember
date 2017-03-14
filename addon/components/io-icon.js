@@ -28,12 +28,18 @@ export default Ember.Component.extend({
 		return  'ioicon ioicon-' + this.get('type');
 	}.property('type'),
 	click: function() {
-		let dc=this.get("doubleClick");
+		let dc=this.get('doubleClick');
 		if(!dc){
-			this.set("doubleClick",true);
-			this.sendAction('onClick');
-			let self=this;
-			setTimeout(function(){self.set("doubleClick",false);},2000);
+			this.set('doubleClick',true);
+			if (this.get('onClick')) {
+				this.send('onClick', this);
+			} else {
+				this.sendAction(this);
+			}
+			setTimeout(function() {
+                this.set("doubleClick",false);
+            }.bind(this), 2000);
 		}
-	}
+		
+	},
 });

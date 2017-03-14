@@ -1094,7 +1094,14 @@ export default Component.extend({
             this.set("filteredContent",filterData);
         },
         sendAction() {
-            this.sendAction.apply(this, arguments);
+            let dc=this.get("dClick")||false;
+            if(!dc){
+                this.set("dClick",true);
+                this.sendAction.apply(this, arguments);
+                setTimeout(function() {
+                    this.set("dClick",false);
+                }.bind(this), 2000);
+            }
         },
         toggleHidden(column) {
             if (get(column, 'mayBeHidden')) {

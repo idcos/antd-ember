@@ -89,8 +89,9 @@ export default Ember.Component.extend({
 			} else {
 				this.sendAction(this);
 			}
-			let self=this;
-			setTimeout(function(){self.set("doubleClick",false);},1800);
+			setTimeout(function() {
+                this.set("doubleClick",false);
+            }.bind(this), 2000);
 		}
 	}
 });

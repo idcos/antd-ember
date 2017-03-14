@@ -108,7 +108,9 @@ export default Ember.Component.extend(DisabledClass, {
           let self=this;
           this.set("subsave",false);
           self.sendAction('submitForm', self.get('formData'));
-          setTimeout(function(){self.set("subsave",true);},2000);
+          setTimeout(function() {
+            this.set("subsave",true);
+          }.bind(this), 2000);
         } catch (err) {
           console.log('warning: ', err);
         }
