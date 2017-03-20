@@ -1099,7 +1099,9 @@ export default Component.extend({
                 this.set("dClick",true);
                 this.sendAction.apply(this, arguments);
                 setTimeout(function() {
-                    this.set("dClick",false);
+                    if(!this.isDestroyed){
+                        this.set("dClick",false);
+                    }
                 }.bind(this), 2000);
             }
         },

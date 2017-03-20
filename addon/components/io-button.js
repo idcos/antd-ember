@@ -90,7 +90,9 @@ export default Ember.Component.extend({
 				this.sendAction(this);
 			}
 			setTimeout(function() {
-                this.set("doubleClick",false);
+                if(!this.isDestroyed){
+					this.set("doubleClick",false);
+				}
             }.bind(this), 2000);
 		}
 	}
