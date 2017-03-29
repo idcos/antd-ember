@@ -655,7 +655,9 @@ export default Component.extend({
      * @name ModelsTable#filterStringObserver
      */
     filterStringObserver: observer('filterString', 'processedColumns.@each.filterString', function() {
-        set(this, 'currentPageNumber', 1);
+        Ember.run.later(() => {
+            set(this, 'currentPageNumber', 1);
+        })
     }),
     /**
      * Show first page if for some reasons there is no content for current page, but table data exists
