@@ -424,36 +424,36 @@ export default Component.extend({
         return get(this, 'currentPageNumber') < get(this, 'pagesCount');
     }),
     /*
-    * 监听搜索内容，在搜索内容为空时，显示全部数据
-    */
+     * 监听搜索内容，在搜索内容为空时，显示全部数据
+     */
     filterStringIsNone: Ember.observer('filterString', function() {
-        var filterString=this.get("filterString");
-        if(filterString==""||filterString==undefined){
-            this.send("searchAction",this.get("filterString"));
+        var filterString = this.get("filterString");
+        if (filterString == "" || filterString == undefined) {
+            this.send("searchAction", this.get("filterString"));
         }
     }),
     /*
-    * 监听键盘是否为回车,如果键值为13则判断当前搜索内容，并触发searchAction
-    */
+     * 监听键盘是否为回车,如果键值为13则判断当前搜索内容，并触发searchAction
+     */
     keypressObserver: observer('keypressCode', function() {
-        if (get(this, 'keypressCode')==13) {
-            var filterString=this.get("filterString");
-            if(filterString!=""&&filterString!=undefined){
-                this.set("loading",true);
-                this.send("searchAction",this.get("filterString"));
+        if (get(this, 'keypressCode') == 13) {
+            var filterString = this.get("filterString");
+            if (filterString != "" && filterString != undefined) {
+                this.set("loading", true);
+                this.send("searchAction", this.get("filterString"));
             }
-            this.set("keypressCode",null);
+            this.set("keypressCode", null);
         }
     }),
     filterByColumnsObserver: observer('useFilteringByColumns', function() {
         // if (get(this, 'keypressCode')==13) {
-            
+
         // }
-        if(this.get('useFilteringByColumns')===false){
-            let processedColumns=this.get("processedColumns");
-            if(processedColumns!==undefined){
+        if (this.get('useFilteringByColumns') === false) {
+            let processedColumns = this.get("processedColumns");
+            if (processedColumns !== undefined) {
                 processedColumns.forEach(c => {
-                    set(c,'filterString','');
+                    set(c, 'filterString', '');
                 });
             }
         }
@@ -462,7 +462,7 @@ export default Component.extend({
      * @type {Ember.Object[]}
      * @name ModelsTable#filteredContent
      */
-    filteredContent: computed('data.[]', 'useFilteringByColumns', function() {
+    filteredContent: computed('data', 'data.[]', 'useFilteringByColumns', function() {
         const {
             processedColumns,
             data,
@@ -496,16 +496,16 @@ export default Component.extend({
                 const propertyName = get(c, 'propertyName');
                 if (propertyName) {
                     var cellValue = '' + get(row, propertyName);
-                    if(filterString.match(new RegExp("^[A-Za-z]+$"))){
+                    if (filterString.match(new RegExp("^[A-Za-z]+$"))) {
                         cellValue = '' + get(row, propertyName + '__pinyin');
                     }
                     if (filteringIgnoreCase) {
                         cellValue = cellValue.toLowerCase();
                         filterString = filterString.toLowerCase();
                     }
-                    if(filterString.match(new RegExp("^[A-Za-z]+$"))){
+                    if (filterString.match(new RegExp("^[A-Za-z]+$"))) {
                         return defaultFilter(cellValue, filterString);
-                    }else{
+                    } else {
                         return -1 !== cellValue.indexOf(filterString);
                     }
                 }
@@ -537,9 +537,9 @@ export default Component.extend({
                                 filterString = filterString.toLowerCase();
                             }
 
-                            if(filterString.match(new RegExp("^[A-Za-z]+$"))){
+                            if (filterString.match(new RegExp("^[A-Za-z]+$"))) {
                                 return defaultFilter(cellValuePinyin, filterString);
-                            }else{
+                            } else {
                                 return -1 !== cellValue.indexOf(filterString);
                             }
                         }
@@ -674,7 +674,7 @@ export default Component.extend({
         var currentPageNumber = get(this, 'currentPageNumber');
 
 
-        this.set("loading",false);
+        this.set("loading", false);
 
         if (!visibleContentLength && dataLength && currentPageNumber !== 1) {
             set(this, 'currentPageNumber', 1);
@@ -772,7 +772,7 @@ export default Component.extend({
              */
             const widthType = typeof c.width;
             let widthString = null;
-            switch(widthType) {
+            switch (widthType) {
                 case 'number':
                     widthString = c.width + 'px';
                     break;
@@ -977,21 +977,21 @@ export default Component.extend({
          * [indexNumberBase description]
          * @type {[type]}
          */
-        enterAction: function(filterString){
-            var filterString=this.get("filterString");
-            if(filterString!=""||filterString!=undefined){
-                this.set("loading",true);
-                this.send("searchAction",this.get("filterString"));
+        enterAction: function(filterString) {
+            var filterString = this.get("filterString");
+            if (filterString != "" || filterString != undefined) {
+                this.set("loading", true);
+                this.send("searchAction", this.get("filterString"));
             }
         },
-        keyUpAction:function(filterString){
-            var filterString=this.get("filterString");
-            if(filterString==""||filterString==undefined){
-                this.set("loading",true);
-                this.send("searchAction",this.get("filterString"));
+        keyUpAction: function(filterString) {
+            var filterString = this.get("filterString");
+            if (filterString == "" || filterString == undefined) {
+                this.set("loading", true);
+                this.send("searchAction", this.get("filterString"));
             }
         },
-        searchAction: function(filterString){
+        searchAction: function(filterString) {
             const {
                 processedColumns,
                 data,
@@ -1008,7 +1008,7 @@ export default Component.extend({
              */
             const indexNumberBase = this.get('indexNumberBase') || 0;
             const showIndexNumber = this.get('showIndexNumber');
-            if(filterString.match(new RegExp("^[A-Za-z]+$"))){
+            if (filterString.match(new RegExp("^[A-Za-z]+$"))) {
                 data.forEach((it, index) => {
                     set(it, '__index', index + indexNumberBase);
                     processedColumns.forEach(c => {
@@ -1019,7 +1019,7 @@ export default Component.extend({
                         }
                     });
                 });
-            }else{
+            } else {
                 data.forEach((it, index) => {
                     set(it, '__index', index + indexNumberBase);
                 });
@@ -1032,16 +1032,16 @@ export default Component.extend({
                     const propertyName = get(c, 'propertyName');
                     if (propertyName) {
                         var cellValue = '' + get(row, propertyName);
-                        if(filterString.match(new RegExp("^[A-Za-z]+$"))){
+                        if (filterString.match(new RegExp("^[A-Za-z]+$"))) {
                             cellValue = '' + get(row, propertyName + '__pinyin');
                         }
                         if (filteringIgnoreCase) {
                             cellValue = cellValue.toLowerCase();
                             filterString = filterString.toLowerCase();
                         }
-                        if(filterString.match(new RegExp("^[A-Za-z]+$"))){
+                        if (filterString.match(new RegExp("^[A-Za-z]+$"))) {
                             return defaultFilter(cellValue, filterString);
-                        }else{
+                        } else {
                             return -1 !== cellValue.indexOf(filterString);
                         }
 
@@ -1050,12 +1050,12 @@ export default Component.extend({
                 }) : true;
             });
 
-            var filterData=A([]);
+            var filterData = A([]);
             if (!useFilteringByColumns) {
-                filterData=A(globalSearch);
-            }else{
+                filterData = A(globalSearch);
+            } else {
                 // search by each column
-                filterData=A(globalSearch.filter(row => {
+                filterData = A(globalSearch.filter(row => {
                     return processedColumns.length ? processedColumns.every(c => {
                         const propertyName = get(c, 'propertyName');
                         if (propertyName) {
@@ -1080,9 +1080,9 @@ export default Component.extend({
                                     // }else{
                                     //     return c.filterFunction(cellValue, filterString);
                                     // }
-                                    if(filterString.match(new RegExp("^[A-Za-z]+$"))){
+                                    if (filterString.match(new RegExp("^[A-Za-z]+$"))) {
                                         return defaultFilter(cellValuePinyin, filterString);
-                                    }else{
+                                    } else {
                                         return -1 !== cellValue.indexOf(filterString);
                                     }
                                 }
@@ -1093,16 +1093,16 @@ export default Component.extend({
                     }) : true;
                 }));
             }
-            this.set("filteredContent",filterData);
+            this.set("filteredContent", filterData);
         },
         sendAction() {
-            let dc=this.get("dClick")||false;
-            if(!dc){
-                this.set("dClick",true);
+            let dc = this.get("dClick") || false;
+            if (!dc) {
+                this.set("dClick", true);
                 this.sendAction.apply(this, arguments);
                 setTimeout(function() {
-                    if(!this.isDestroyed){
-                        this.set("dClick",false);
+                    if (!this.isDestroyed) {
+                        this.set("dClick", false);
                     }
                 }.bind(this), 2000);
             }
