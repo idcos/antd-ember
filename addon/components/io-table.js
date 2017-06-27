@@ -458,6 +458,11 @@ export default Component.extend({
             }
         }
     }),
+    _dataChangeObserver: observer("data.[]", function() {
+        Ember.run.later(null, ev => {
+            this.send("searchAction", "");
+        }, 10)
+    }),
     /**
      * @type {Ember.Object[]}
      * @name ModelsTable#filteredContent
